@@ -7,6 +7,6 @@ namespace Resources
     {
         public GraphNode Source;
         public GraphNode Target;
-        public List<ResourceTransfer> Transfers;
+        public List<ResourceTransfer> Transfers = new List<ResourceTransfer>();
     }
 }
