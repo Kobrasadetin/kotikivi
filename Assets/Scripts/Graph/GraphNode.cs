@@ -5,12 +5,11 @@ using UnityEngine;
 
 namespace Graph
 {
-
     public class GraphNode
     {
         public List<GraphNode> Neighbors;
         public List<Resource> Resources;
         public List<ResourceStream> ResourceStreams;
+        public List<ResourceInteraction> ResourceInteractions;
     }
-
 }
