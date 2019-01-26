@@ -1,6 +1,7 @@
 ﻿using Graph;
 using System.Collections.Generic;
 using UnityEngine;
+using Visual.InteractionImplementations;
 
 namespace Visual
 {
@@ -9,6 +10,8 @@ namespace Visual
         public PrefabChangeEvaluator prefabChangeEvaluator;
         public GraphNode node;
         public GameObject groundMesh;
+        public VisualInteraction[] visualInteractions;
+
         private MeshRenderer groundMeshRenderer;
         private bool initialized;
         private bool geometryChanged;
@@ -42,6 +45,24 @@ namespace Visual
         public void SetGroundColor(Color color)
         {
             groundMeshRenderer.material.SetColor("_Color", color);
+        }
+
+        public void ResetInteractionTargets()
+        {
+            foreach (var visualInteraction in visualInteractions)
+            {
+                visualInteraction.Target = 0;
+            }
+        }
+        public void SetInteractionValue(string Id, float value)
+        {
+            foreach (var visualInteraction in visualInteractions)
+            {
+                if (visualInteraction.Id == Id)
+                {
+                    visualInteraction.Target = value;
+                }
+            }
         }
 
         public void Initialize(GraphNode node, PrefabChangeEvaluator prefabChangeEvaluator)
