@@ -96,14 +96,14 @@ MonoBehaviour:
       Amount: 0.4
     - Type: 1
       Amount: 0.2
-    - Type: 5
+    - Type: 2
       Amount: 0.2
     Sources:
-    - Type: 8
-      Amount: 0.2
+    - Type: 2
+      Amount: 0.1
     Spawns:
     - Id: Tall Grass
-      Threshold: 0.5
+      Threshold: 10
       Dependencies:
       - Id: Tall Grass
         Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
@@ -456,7 +456,7 @@ MonoBehaviour:
                 - Id: Basic Grass
                   Threshold: 0.5
     - Id: Basic Grass
-      Threshold: 0.2
+      Threshold: 5
       Dependencies:
       - Id: Tall Grass
         Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
@@ -812,18 +812,17 @@ MonoBehaviour:
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 6
     Sinks:
-    - Type: 4
+    - Type: 0
       Amount: 0.1
-    - Type: 7
-      Amount: 0.1
-    - Type: 6
+    - Type: 1
       Amount: 0.1
     Sources:
-    - Type: 6
+    - Type: 2
       Amount: 0.2
-    - Type: 9
-      Amount: 0.1
-    Spawns: []
+    Spawns:
+    - Id: Ants
+      Threshold: 30
+      Dependencies: []
   - Id: Sun
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 3
