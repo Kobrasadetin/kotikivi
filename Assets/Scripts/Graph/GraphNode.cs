@@ -7,9 +7,10 @@ namespace Graph
 {
     public class GraphNode
     {
-        public List<GraphNode> Neighbors;
-        public List<Resource> Resources;
-        public List<ResourceStream> ResourceStreams;
-        public List<ResourceInteraction> ResourceInteractions;
+        public Vector2Int Coordinate = Vector2Int.zero;
+        public List<GraphNode> Neighbors = new List<GraphNode>();
+        public List<Resource> Resources = new List<Resource>();
+        public List<ResourceStream> ResourceStreams = new List<ResourceStream>();
+        public List<ResourceInteraction> ResourceInteractions = new List<ResourceInteraction>();
     }
 }

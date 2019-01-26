@@ -4,7 +4,7 @@ namespace Resources
 {
     public class ResourceInteraction
     {
-        public List<ResourceTransfer> Sinks;
-        public List<ResourceTransfer> Sources;
+        public List<ResourceTransfer> Sinks = new List<ResourceTransfer>();
+        public List<ResourceTransfer> Sources = new List<ResourceTransfer>();
     }
 }
