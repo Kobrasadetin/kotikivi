@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using Graph;
 using Interactions;
 using PowerLines;
@@ -33,6 +34,13 @@ namespace Tests
             {
                 new PowerStream(graph, Library, Types[0], Types[1], Types[2], Angle, Power, Gradient);
             }
+        }
+
+        [ContextMenu("Off")]
+        void Off()
+        {
+            Graph.Graph graph = GraphSingleton.Instance.Graph;
+            graph.Streams.Clear();
         }
 
     }
