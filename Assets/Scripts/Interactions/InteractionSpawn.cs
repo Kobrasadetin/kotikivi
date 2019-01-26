@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Interactions
 {
@@ -7,5 +10,7 @@ namespace Interactions
     {
         public string Id;
         public float Magnitude;
+        [FormerlySerializedAs("LibraryEntries")] [HideInInspector]
+        public List<LibraryEntry> Dependencies;
     }
 }

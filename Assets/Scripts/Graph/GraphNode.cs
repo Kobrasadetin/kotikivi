@@ -7,14 +7,14 @@ using UnityEngine;
 
 namespace Graph
 {
+    [Serializable]
     public class GraphNode
     {
         public float Height = 0;
         public Vector2Int Coordinate = Vector2Int.zero;
         public List<GraphNode> Neighbors = new List<GraphNode>();
         public List<Resource> Resources = new List<Resource>();
-        public List<ResourceStream> ResourceStreams = new List<ResourceStream>();
-        public List<ResourceInteraction> ResourceInteractions = new List<ResourceInteraction>();
+        public List<ResourceInteraction> Interactions = new List<ResourceInteraction>();
 
         public void InitRandomResources()
         {
@@ -26,9 +26,9 @@ namespace Graph
 
         public void Tick()
         {
-            //TODO operate all streams
-            ResourceInteractions.ForEach(x => x.Consume(Resources));
-            ResourceInteractions.ForEach(x => x.Spawn(Neighbors));
+            Interactions.ForEach(x => x.Consume(Resources));
+            Interactions.ForEach(x => x.Spawn(Neighbors));
+            Interactions.ForEach(x => x.Tick());
         }
     }
 }

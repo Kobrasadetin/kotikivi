@@ -12,5 +12,10 @@ namespace Resources
         public float Life;
 
         public bool IsDead => Age > Life;
+
+        public void Tick()
+        {
+            //TODO
+        }
     }
 }
