@@ -5,6 +5,11 @@ using UnityEngine;
 
 namespace Tests
 {
+    public class GraphDebug : MonoBehaviour
+    {
+        public GraphNode Node;
+    }
+
     public class GraphRunnerTest : MonoBehaviour
     {
         public GraphSingleton GraphSingleton;
@@ -12,6 +17,10 @@ namespace Tests
 
         void Start()
         {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Destroy(transform.GetChild(i));
+            }
             // drop random interactions
             GraphSingleton.Graph.Nodes.ForEach(x =>
             {
@@ -22,6 +31,10 @@ namespace Tests
                     var resourceInteraction = new ResourceInteraction(randomInteraction, dependencies);
                     x.Interactions.Add(resourceInteraction);
                 }
+                var debug = new GameObject();
+                var debugComponent = debug.AddComponent<GraphDebug>();
+                debugComponent.Node = x;
+                debug.transform.SetParent(transform);
             });
         }
 

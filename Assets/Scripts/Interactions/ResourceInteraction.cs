@@ -1,12 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.IO.Compression;
 using System.Linq;
 using Graph;
 using Resources;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Interactions
 {
+    [Serializable]
     public class ResourceInteraction
     {
         public string Id;

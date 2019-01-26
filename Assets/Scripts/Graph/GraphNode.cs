@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Graph
 {
+    [Serializable]
     public class GraphNode
     {
         public float Height = 0;

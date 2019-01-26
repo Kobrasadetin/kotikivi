@@ -1,7 +1,9 @@
-using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
 namespace Resources
 {
+    [Serializable]
     public class Resource
     {
         public ResourceType Type;
