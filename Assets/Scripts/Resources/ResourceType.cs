@@ -15,7 +15,7 @@ namespace Resources
     {
         public static float Get(ResourceType type)
         {
-            return 5;
+            return 2.5f;
         }
     }
 }
