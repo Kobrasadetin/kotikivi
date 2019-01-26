@@ -1,16 +1,20 @@
+using System;
+
 namespace Resources
 {
+    [Serializable]
     public enum ResourceType
     {
         WATER,
         SUNLIGHT,
-        WIND,
-        FIRE,
         SPIRIT,
         MINERALS,
-        ORGANICS,
-        DECOMPOMPOSITORS,
+        ROTTING_PLANTS,
         NUTRIENTS,
-        DUNG
+        DUNG,
+        BERRIES,
+        GREEN_PLANTS,
+        LIVE_ANIMALS,
+        CARCASSES
     }
 }
