@@ -9,7 +9,7 @@ namespace Interactions
     public class InteractionSpawn
     {
         public string Id;
-        public float Magnitude;
+        [FormerlySerializedAs("Magnitude")] public float Threshold;
         [FormerlySerializedAs("LibraryEntries")] [HideInInspector]
         public List<LibraryEntry> Dependencies;
     }

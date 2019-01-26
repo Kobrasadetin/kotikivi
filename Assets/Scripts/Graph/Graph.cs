@@ -8,6 +8,7 @@ namespace Graph
      */
     public class Graph
     {
+        public GraphNode HomeNode;
         public List<GraphNode> Nodes = new List<GraphNode>();
         public List<ResourceStream> Streams = new List<ResourceStream>();
 

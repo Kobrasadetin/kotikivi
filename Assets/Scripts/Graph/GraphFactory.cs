@@ -116,19 +116,14 @@ namespace Graph
                 Sources =
                 {
                     new ResourceTransfer(){ Type = ResourceType.WATER, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.SUNLIGHT, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.SPIRIT, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.MINERALS, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.NUTRIENTS, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.DUNG, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.ROTTING_PLANTS, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.GREEN_PLANTS, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.BERRIES, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.CARCASSES, Amount = 100f},
+                    new ResourceTransfer(){ Type = ResourceType.WARMTH, Amount = 100f},
+                    new ResourceTransfer(){ Type = ResourceType.NUTRIENT, Amount = 100f},
+                    new ResourceTransfer(){ Type = ResourceType.LIGTH, Amount = 100f},
                 }
             });
 
             midNode = result.Nodes[midNodeIndex];
+            result.HomeNode = midNode;
             return result;
         }
 

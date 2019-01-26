@@ -316,6 +316,89 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &631420931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 631420935}
+  - component: {fileID: 631420934}
+  - component: {fileID: 631420933}
+  - component: {fileID: 631420932}
+  m_Layer: 0
+  m_Name: GraphStream
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &631420932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631420931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfec487ee7ee4b93bebfe4c7f720511c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GraphSingleton: {fileID: 631420934}
+  InteractionLibrary: {fileID: 11400000, guid: 20735924490994edca9d86f94eff6896, type: 2}
+  GenerateDebugNodes: 1
+--- !u!114 &631420933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631420931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac0438d75304b1d8a93e78fef8d7138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TickRate: 1
+  CurrentTick: 0
+--- !u!114 &631420934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631420931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3243ed0ebe4f95adc2e0aa6bdb6eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dimension: 5
+  NoiseScale: 0.287
+  NoiseOffset: 4.62
+  MiddleNode:
+    Height: 0
+    Coordinate: {x: 0, y: 0}
+    Neighbors: []
+    Resources: []
+    Interactions: []
+--- !u!4 &631420935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631420931}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1062886244
 GameObject:
   m_ObjectHideFlags: 0
