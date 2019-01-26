@@ -7,14 +7,19 @@ namespace Visual
 {
     public class VisualRoot : MonoBehaviour
     {
-        Graph.Graph graph;
+        public VisualizationLibrary visualizationLibrary;
+
+        private Graph.Graph graph;
+        private BasicPrefabEvaluator evaluator;
+
         // Start is called before the first frame update
         void Start()
         {
+            evaluator = new BasicPrefabEvaluator(visualizationLibrary);
             graph = Graph.GraphSingleton.Instance.Graph;
             graph.Nodes.ForEach(node =>
                {
-                   VisualNodeFactory.CreateTile(this.transform, node);
+                   VisualNodeFactory.CreateTile(this.transform, node, evaluator);
                }
             );
         }
