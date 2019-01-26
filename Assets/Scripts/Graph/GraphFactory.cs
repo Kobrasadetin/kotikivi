@@ -107,17 +107,20 @@ namespace Graph
             int midNodeIndex = dimension * (dimension / 2) + (dimension / 2) - 1;
             result.Nodes[midNodeIndex].ResourceInteractions.Add(new ResourceInteraction()
             {
+                Type = InterActionType.HOME,
                 Sources =
                 {
                     new ResourceTransfer(){ Type = ResourceType.WATER, Amount = 100f},
                     new ResourceTransfer(){ Type = ResourceType.SUNLIGHT, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.WIND, Amount = 100f},
                     new ResourceTransfer(){ Type = ResourceType.SPIRIT, Amount = 100f},
                     new ResourceTransfer(){ Type = ResourceType.MINERALS, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.ORGANICS, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.DECOMPOMPOSITORS, Amount = 100f},
                     new ResourceTransfer(){ Type = ResourceType.NUTRIENTS, Amount = 100f},
                     new ResourceTransfer(){ Type = ResourceType.DUNG, Amount = 100f},
+                    new ResourceTransfer(){ Type = ResourceType.ROTTING_PLANTS, Amount = 100f},
+                    new ResourceTransfer(){ Type = ResourceType.GREEN_PLANTS, Amount = 100f},
+                    new ResourceTransfer(){ Type = ResourceType.LIVE_ANIMALS, Amount = 100f},
+                    new ResourceTransfer(){ Type = ResourceType.BERRIES, Amount = 100f},
+                    new ResourceTransfer(){ Type = ResourceType.CARCASSES, Amount = 100f},
                 }
             });
 
