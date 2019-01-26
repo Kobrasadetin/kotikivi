@@ -7,6 +7,8 @@ namespace Graph
         public static GraphSingleton Instance { get; private set; }
 
         public int Dimension;
+        public float NoiseScale;
+        public float NoiseOffset;
         public Graph Graph;
         public GraphNode MiddleNode;
 
@@ -17,7 +19,7 @@ namespace Graph
 
         private void Start()
         {
-            Graph = GraphFactory.CreateGraph(Dimension, out MiddleNode);
+            Graph = GraphFactory.CreateGraph(Dimension, NoiseScale, NoiseOffset, out MiddleNode);
         }
     }
 }

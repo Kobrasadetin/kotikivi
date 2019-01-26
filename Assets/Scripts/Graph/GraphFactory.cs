@@ -1,6 +1,7 @@
 using Interactions;
 using Resources;
 using UnityEngine;
+using Utils;
 
 namespace Graph
 {
@@ -8,8 +9,9 @@ namespace Graph
     {
         /**
          * Create rectangular graph that represents hexagon grid rendered in 1/2 square offset on each alternating row
+         * Height from perlin noise
          */
-        public static Graph CreateGraph(int dimension, out GraphNode midNode)
+        public static Graph CreateGraph(int dimension, float noiseScale, float noiseOffset, out GraphNode midNode)
         {
             Graph result = new Graph();
             // Nodes are linear list in two dimensions, but are rendered and interact in a hex grid
@@ -23,6 +25,7 @@ namespace Graph
                         Coordinate = new Vector2Int(x, y)
                     };
                     thisNode.InitRandomResources();
+                    thisNode.Height = Perlin.Noise(noiseOffset + noiseScale * x, noiseOffset + noiseScale * y) / 2 + 0.5f;
                     result.Nodes.Add(thisNode);
                 }
             }
