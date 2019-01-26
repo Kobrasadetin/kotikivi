@@ -1,3 +1,4 @@
+using Interactions;
 using Resources;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ namespace Graph
                     {
                         Coordinate = new Vector2Int(x, y)
                     };
+                    thisNode.InitRandomResources();
                     result.Nodes.Add(thisNode);
                 }
             }

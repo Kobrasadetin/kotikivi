@@ -1,5 +1,8 @@
+using System;
+
 namespace Resources
 {
+    [Serializable]
     public enum ResourceType
     {
         WATER,

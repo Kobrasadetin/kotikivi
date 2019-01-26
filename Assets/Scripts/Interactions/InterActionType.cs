@@ -1,5 +1,8 @@
-namespace Resources
+using System;
+
+namespace Interactions
 {
+    [Serializable]
     public enum InterActionType
     {
         HOME,
