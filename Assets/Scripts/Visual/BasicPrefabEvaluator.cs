@@ -16,7 +16,7 @@ namespace Visual
         public BasicPrefabEvaluator(VisualizationLibrary library)
         {
             this.library = library;
-        }      
+        }
 
         public GameObject prefabObject;
         public override void UpdatePrefab(VisualNode visualNode, GraphNode node)
@@ -30,6 +30,7 @@ namespace Visual
             }
 
             //update visualizations
+            node.Interactions.ForEach(x => visualNode.SetInteractionValue(x.Id, x.CurrentFlowRate));
 
             //grassiness
             float grassiness = getMedian(node, new List<ResourceType> { ResourceType.NUTRIENT, ResourceType.WARMTH });
@@ -54,7 +55,7 @@ namespace Visual
             {
                 sum += r.Amount;
                 count++;
-            }           
+            }
             return sum/count;
         }
 
