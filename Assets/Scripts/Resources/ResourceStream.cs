@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Graph;
 using Interactions;
 
@@ -14,8 +15,17 @@ namespace Resources
 
         public void Tick()
         {
-            Transfers.ForEach(x => { Target.Resources.First(y => y.Type == x.Type).Amount += x.Amount; });
-            // TODO add interaction if not here
+            Transfers.ForEach(x =>
+            {
+                Target.Resources.First(y => y.Type == x.Type).Source(x.Amount);
+            });
+            Interactions.ForEach(x =>
+            {
+                if (!Target.Interactions.Exists(y => y.Id == x.Id))
+                {
+                    Target.Interactions.Add(x);
+                }
+            });
             Age += 1;
         }
     }

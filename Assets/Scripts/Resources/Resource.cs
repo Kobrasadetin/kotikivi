@@ -18,5 +18,15 @@ namespace Resources
             };
             return result;
         }
+
+        public void Source(float amount)
+        {
+            Amount = Math.Min(ResourceCap.Get(Type), Amount + amount);
+        }
+
+        public void Sink(float amount)
+        {
+            Amount = Math.Max(0f, Amount - amount);
+        }
     }
 }
