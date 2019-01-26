@@ -20,12 +20,8 @@ namespace PowerLines
 
     public class PowerStream
     {
-        public GraphNode Home;
-        public List<ResourceStream> Generators { get; private set; } = new List<ResourceStream>();
-
-        public PowerStream(Graph.Graph graph, InteractionLibrary library, GraphNode home, PowerRuneType a, PowerRuneType b, StreamAngle angle, float power, float gradient)
+        public PowerStream(Graph.Graph graph, InteractionLibrary library, PowerRuneType a, PowerRuneType b, StreamAngle angle, float power, float gradient)
         {
-            Home = home;
             List<ResourceType> resourceTypes = new List<ResourceType>();
             resourceTypes.Add(PowerRuneMixer.GetResourceType(a));
             resourceTypes.Add(PowerRuneMixer.GetResourceType(b));
@@ -34,7 +30,7 @@ namespace PowerLines
             LibraryEntry spawnType = library.GetRandomInteractionOfType(interActionType, out dependencies);
             // iterate to a direction
             float mainPower = power;
-            GraphNode iter = Home.GetNeighborInDirection(angle);
+            GraphNode iter = graph.HomeNode.GetNeighborInDirection(angle);
             while (iter != null && mainPower > 0)
             {
                 // create resourcestream
@@ -51,7 +47,7 @@ namespace PowerLines
             }
             // iterate to b direction
             mainPower = power;
-            iter = Home.GetNeighborInDirection(GetOppositeAngle(angle));
+            iter = graph.HomeNode.GetNeighborInDirection(GetOppositeAngle(angle));
             while (iter != null && mainPower > 0)
             {
                 // drop resourcestream
@@ -68,9 +64,8 @@ namespace PowerLines
             }
         }
 
-        public PowerStream(Graph.Graph graph, InteractionLibrary library, GraphNode home, PowerRuneType a, PowerRuneType b, PowerRuneType c, StreamAngle angle, float power, float gradient)
+        public PowerStream(Graph.Graph graph, InteractionLibrary library, PowerRuneType a, PowerRuneType b, PowerRuneType c, StreamAngle angle, float power, float gradient)
         {
-            Home = home;
             List<ResourceType> resourceTypes = new List<ResourceType>();
             resourceTypes.Add(PowerRuneMixer.GetResourceType(a));
             resourceTypes.Add(PowerRuneMixer.GetResourceType(b));
@@ -80,7 +75,7 @@ namespace PowerLines
             LibraryEntry spawnType = library.GetRandomInteractionOfType(interActionType, out dependencies);
             // iterate to a direction
             float mainPower = power;
-            GraphNode iter = Home.GetNeighborInDirection(angle);
+            GraphNode iter = graph.HomeNode.GetNeighborInDirection(angle);
             while (iter != null && mainPower > 0)
             {
                 // create resourcestream
@@ -98,7 +93,7 @@ namespace PowerLines
             }
             // iterate to b direction
             mainPower = power;
-            iter = Home.GetNeighborInDirection(GetOppositeAngle(angle));
+            iter = graph.HomeNode.GetNeighborInDirection(GetOppositeAngle(angle));
             while (iter != null && mainPower > 0)
             {
                 // drop resourcestream
