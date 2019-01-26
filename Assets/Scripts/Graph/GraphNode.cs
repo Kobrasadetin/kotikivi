@@ -25,7 +25,9 @@ namespace Graph
 
         public void Tick()
         {
-            //TODO operate all streams and interactions
+            //TODO operate all streams
+            ResourceInteractions.ForEach(x => x.Consume(Resources));
+            ResourceInteractions.ForEach(x => x.Spawn(Neighbors));
         }
     }
 }
