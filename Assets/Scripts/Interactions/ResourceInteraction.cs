@@ -23,7 +23,7 @@ namespace Interactions
 
         public float MaxFlowRate => Sinks.Sum(x => x.Amount) + Sources.Sum(y => y.Amount);
         public float CurrentFlowRate { get; private set; } = 1f;
-        public bool IsDead => CurrentFlowRate <= 0f;
+        public bool IsDead => CurrentFlowRate <= 0.01f;
 
         public void Consume(List<Resource> resources)
         {
