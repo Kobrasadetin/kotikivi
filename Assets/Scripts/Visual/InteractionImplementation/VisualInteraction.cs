@@ -14,8 +14,29 @@ namespace Visual.InteractionImplementations
 
         public void InterpolateValue(float deltaTime)
         {
-            Value = Target > Value ? Value + InterpolateDelta * deltaTime : Value - InterpolateDelta * deltaTime;
-            //TODO nice interpolation
+            var d = InterpolateDelta * deltaTime;
+            if (Target >= Value)
+            {
+                if (Value + d > Target)
+                {
+                    Value = Target;
+                }
+                else
+                {
+                    Value = Value + d;
+                }
+            }
+            else
+            {
+                if (Value - d < Target)
+                {
+                    Value = Target;
+                }
+                else
+                {
+                    Value = Value - d;
+                }
+            }
         }
 
         public virtual void SetValue()

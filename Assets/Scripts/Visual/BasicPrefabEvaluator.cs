@@ -30,6 +30,7 @@ namespace Visual
             }
 
             //update visualizations
+            visualNode.ResetInteractionTargets();
             node.Interactions.ForEach(x => visualNode.SetInteractionValue(x.Id, x.CurrentFlowRate));
 
             //grassiness
