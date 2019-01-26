@@ -8,6 +8,7 @@ namespace Visual
     {
         public PrefabChangeEvaluator prefabChangeEvaluator;
         public GraphNode node;
+        public GameObject groundMesh;
         private bool initialized;
         private bool geometryChanged;
         private float simulationHeight;
@@ -37,12 +38,30 @@ namespace Visual
             this.simulationHeight = node.Height;
             SetVisualHeight(this.simulationHeight);
         }
+        public void SetGroundColor(Color color)
+        {
+            MeshRenderer renderer = this.groundMesh.GetComponent<MeshRenderer>();
+            Color old = renderer.material.color;
+            if (old == color)
+            {
+                Debug.Log("same color");
+            } else
+            {
+                Debug.Log("different color");
+            }
+            renderer.material.SetColor("_Color", color);
+        }
 
         public void Initialize(GraphNode node, PrefabChangeEvaluator prefabChangeEvaluator)
         {
             this.node = node;
             this.prefabChangeEvaluator = prefabChangeEvaluator;
             SetPosition(this.prefabChangeEvaluator.calculatePosition(node));
+            this.groundMesh = transform.Find("GroundMesh").gameObject;
+            if (groundMesh == null)
+            {
+                Debug.LogError("No GroundMesh");
+            }
             initialized = true;
             geometryChanged = true;
         }
