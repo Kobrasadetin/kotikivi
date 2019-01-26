@@ -15,7 +15,7 @@ MonoBehaviour:
   Entries:
   - Id: Basic Grass
     Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-    Type: 7
+    Type: 4
     Sinks:
     - Type: 0
       Amount: 0.2
@@ -90,7 +90,7 @@ MonoBehaviour:
                   Threshold: 0.5
   - Id: Tall Grass
     Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-    Type: 1
+    Type: 9
     Sinks:
     - Type: 0
       Amount: 0.4
@@ -810,7 +810,7 @@ MonoBehaviour:
                   Threshold: 0.5
   - Id: Ants
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-    Type: 6
+    Type: 7
     Sinks:
     - Type: 0
       Amount: 0.1
