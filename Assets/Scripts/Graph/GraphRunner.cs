@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Graph
@@ -21,12 +22,33 @@ namespace Graph
 
         public void Update()
         {
+            TickAll();
+        }
+
+        private static void RemoveDeadInterActions()
+        {
+            GraphSingleton.Instance.Graph.Nodes.ForEach(x =>
+            {
+                for (int i = 0; i < x.Interactions.Count; i++)
+                {
+                    if (x.Interactions[i].IsDead)
+                    {
+                        x.Interactions.RemoveAt(i);
+                        i--;
+                    }
+                }
+            });
+        }
+
+        private void TickAll()
+        {
             tickCounter += Time.deltaTime * TickRate;
 
             int nTicksToRun = Mathf.FloorToInt(tickCounter);
             for (int i = 0; i < nTicksToRun; i++)
             {
-                GetComponent<GraphSingleton>().Graph.Tick();
+                GraphSingleton.Instance.Graph.Tick();
+                RemoveDeadInterActions();
                 CurrentTick++;
             }
 
