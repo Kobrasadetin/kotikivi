@@ -23,7 +23,7 @@ namespace PowerLines
             }
         }
 
-        public static InterActionType GetMix2(PowerRuneType[] runes)
+        public static InterActionType GetMix(PowerRuneType[] runes)
         {
             if (runes.Length == 2)
             {

@@ -34,6 +34,13 @@ namespace Interactions
             return randomInteraction;
         }
 
+        public LibraryEntry GetRandomInteractionOfType(InterActionType type, out List<LibraryEntry> dependencies)
+        {
+            var randomInteraction = Entries[Mathf.FloorToInt(Random.Range(0.001f, Entries.Count - 0.001f))];
+            dependencies = GetDependencies(randomInteraction.Id);
+            return randomInteraction;
+        }
+
         public List<LibraryEntry> GetDependencies(string id)
         {
             List<LibraryEntry> results = new List<LibraryEntry>();
