@@ -1,4 +1,5 @@
 using Resources;
+using UnityEngine;
 
 namespace Graph
 {
@@ -16,7 +17,10 @@ namespace Graph
             {
                 for (int x = 0; x < dimension; x++)
                 {
-                    GraphNode thisNode = new GraphNode();
+                    GraphNode thisNode = new GraphNode()
+                    {
+                        Coordinate = new Vector2Int(x, y)
+                    };
                     result.Nodes.Add(thisNode);
                 }
             }
