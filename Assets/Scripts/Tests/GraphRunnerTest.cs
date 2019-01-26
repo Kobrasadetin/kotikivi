@@ -18,9 +18,12 @@ namespace Tests
 
         void Start()
         {
-            for (int i = 0; i < transform.childCount; i++)
+            if (GenerateDebugNodes)
             {
-                Destroy(transform.GetChild(i));
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    Destroy(transform.GetChild(i));
+                }
             }
             // drop random interactions
             GraphSingleton.Graph.Nodes.ForEach(x =>
