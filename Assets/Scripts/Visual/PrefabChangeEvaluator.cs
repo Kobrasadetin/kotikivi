@@ -13,9 +13,20 @@ public abstract class PrefabChangeEvaluator
 
     public Vector2 calculatePosition(GraphNode node)
     {
-        float oddOffset = (node.Coordinate.y % 2) * (sideLength);
-        float xposition = node.Coordinate.x * sideLength *2  + oddOffset;
-        float yposition = node.Coordinate.y * 1.5f;
+        return calculatePosition(node.Coordinate);
+    }
+
+    public Vector3 calculatePositionWithHeight(GraphNode node)
+    {
+        Vector2 v = calculatePosition(node.Coordinate);
+        return new Vector3(v.x, node.Height, v.y);
+    }
+
+    public Vector2 calculatePosition(Vector2Int coordinates)
+    {
+        float oddOffset = (coordinates.y % 2) * (sideLength);
+        float xposition = coordinates.x * sideLength * 2 + oddOffset;
+        float yposition = coordinates.y * 1.5f;
         return new Vector2(xposition, yposition);
     }
 }
