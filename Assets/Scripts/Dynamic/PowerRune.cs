@@ -10,5 +10,15 @@ namespace Dynamic
         {
             this.prefab = UnityEngine.Resources.Load<GameObject>("Stone");
         }
+
+        override public DynamicObject PickUpObject()
+        {
+            if (this.GetHeldByPlayer() == false)
+            {
+                this.SetHeldByPlayer(true);
+                return this;
+            }
+            return null;
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Visual
     {
         private VisualizationLibrary library;
         static Color green = new Color(0.117f, 0.760f, 0.219f);
-        static Color brown = new Color(0.670f, 0.639f, 0.607f);
+        static Color brown = new Color(0.470f, 0.239f, 0.207f);
 
         public BasicPrefabEvaluator(VisualizationLibrary library)
         {

@@ -6,9 +6,21 @@ using Dynamic;
 public class VisualDynamicObject : MonoBehaviour
 {
     private DynamicObject dynamicObject;
+    private Vector3 visualPosition = Vector3.zero;
+
+    public DynamicObject GetDynamicObject() {
+        return dynamicObject;
+    }
+
     public void Initialize(DynamicObject dynamicObject)
     {
         this.dynamicObject = dynamicObject;
+        this.visualPosition = calculateCoordinates(dynamicObject.GetPosition());
+    }
+
+    private Vector3 calculateCoordinates(Vector3 worldPos)
+    {
+        return new Vector3(worldPos.x, worldPos.y * 3, worldPos.z);
     }
     // Start is called before the first frame update
     void Start()
@@ -21,13 +33,18 @@ public class VisualDynamicObject : MonoBehaviour
     {
         if (!dynamicObject.GetHeldByPlayer())
         {
-            var wolrdPos = dynamicObject.GetPosition();
-            transform.position = new Vector3(wolrdPos.x, wolrdPos.y * 3, wolrdPos.z);
+            visualPosition = calculateCoordinates(dynamicObject.GetPosition());
+            transform.position = visualPosition;
         }
         else
         {
-            var wolrdPos = dynamicObject.GetPosition();
-            transform.position = new Vector3(wolrdPos.x, wolrdPos.y * 3 - 1, wolrdPos.z);
+            //player dragging
+            var targetPosition = calculateCoordinates(dynamicObject.GetPosition()) + new Vector3(0f,0.5f,0f);
+            float heightLerp = Mathf.Lerp(visualPosition.y, targetPosition.y, 0.08f);
+            Vector3 planeLerp = Vector3.Lerp(visualPosition, targetPosition, 0.4f);
+            visualPosition = new Vector3(planeLerp.x, heightLerp, planeLerp.z);
+            transform.position = visualPosition;
+
         }
         
     }

@@ -12,6 +12,11 @@ namespace Dynamic
 
         public GameObject prefab;
 
+        public virtual DynamicObject PickUpObject()
+        {
+            return null;
+        }
+
         public bool GetHeldByPlayer()
         {
             return heldByPlayer;
