@@ -20,6 +20,7 @@ namespace Visual.InteractionImplementations
         {
             for (int i=0; i<Transforms.Length; i++)
             {
+                Transforms[i].gameObject.SetActive(Value > 0.01f);
                 Transforms[i].localScale = MaxScale[i] * Value;
             }
         }

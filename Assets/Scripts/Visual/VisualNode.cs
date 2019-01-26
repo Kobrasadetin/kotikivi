@@ -1,5 +1,6 @@
 ﻿using Graph;
 using System.Collections.Generic;
+using Interactions;
 using Resources;
 using UnityEngine;
 using Visual.InteractionImplementations;
@@ -95,6 +96,16 @@ namespace Visual
             foreach (var visualStream in visualStreams)
             {
                 if (visualStream.Type == type)
+                {
+                    visualStream.Target = value;
+                }
+            }
+        }
+        public void SetStreamVisualizaionValue(InterActionType type, float value)
+        {
+            foreach (var visualStream in visualStreams)
+            {
+                if (visualStream.IType == type)
                 {
                     visualStream.Target = value;
                 }

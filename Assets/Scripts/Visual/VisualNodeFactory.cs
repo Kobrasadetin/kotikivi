@@ -9,10 +9,10 @@ namespace Visual
     {
         private static GameObject[] prefabResource = new GameObject[]
         {
-            UnityEngine.Resources.Load<GameObject>("GroundNode"),
-            UnityEngine.Resources.Load<GameObject>("GroundNode"),
-            UnityEngine.Resources.Load<GameObject>("GroundNode"),
-            UnityEngine.Resources.Load<GameObject>("GroundNode"),
+            UnityEngine.Resources.Load<GameObject>("GroundNode 1"),
+            UnityEngine.Resources.Load<GameObject>("GroundNode 1"),
+            UnityEngine.Resources.Load<GameObject>("GroundNode 1"),
+            UnityEngine.Resources.Load<GameObject>("GroundNode 1"),
         };
 
         private static GameObject homeResource = UnityEngine.Resources.Load<GameObject>("GroundNode");

@@ -1,4 +1,5 @@
 using System;
+using Interactions;
 using Resources;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Visual.InteractionImplementations
     public class VisualStream : MonoBehaviour
     {
         public ResourceType Type;
+        public InterActionType IType;
         public float Value;
         public float Target;
         public float InterpolateDelta;

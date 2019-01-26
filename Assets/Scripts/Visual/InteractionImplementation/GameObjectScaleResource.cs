@@ -18,9 +18,20 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
-            for (int i=0; i<Transforms.Length; i++)
+            if (Value < 0.01f)
             {
-                Transforms[i].localScale = MaxScale[i] * Value;
+                for (int i = 0; i < Transforms.Length; i++)
+                {
+                    Transforms[i].gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                for (int i=0; i<Transforms.Length; i++)
+                {
+                    Transforms[i].gameObject.SetActive(true);
+                    Transforms[i].localScale = MaxScale[i] * Value;
+                }
             }
         }
     }
