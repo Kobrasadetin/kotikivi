@@ -6,15 +6,15 @@ namespace Interactions
     public enum InterActionType
     {
         HOME,
-        GRASS,
-        BRUSHES,
-        LEAFYTREES,
-        CONIFERS,
         FUNGI,
-        ANTS,
         FIRE,
-        FLOWING_WATER,
+        SUN,
+        GRASS,
+        RAIN,
         WIND,
-        SEEDS,
+        INSECTS,
+        LEAFY_GREENS,
+        BUSHES,
+        CONIFERS
     }
 }

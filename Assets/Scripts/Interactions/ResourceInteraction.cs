@@ -112,6 +112,7 @@ namespace Interactions
             {
                 Spawns.Add(x);
                 Spawns[Spawns.Count - 1].Dependencies = dependencies;
+                Spawns[Spawns.Count - 1].Threshold = x.Threshold;
             });
             Age = 0;
         }

@@ -5,15 +5,9 @@ namespace Resources
     [Serializable]
     public enum ResourceType
     {
+        WARMTH,
         WATER,
-        SUNLIGHT,
-        SPIRIT,
-        MINERALS,
-        ROTTING_PLANTS,
-        NUTRIENTS,
-        DUNG,
-        BERRIES,
-        GREEN_PLANTS,
-        CARCASSES
+        NUTRIENT,
+        LIGTH
     }
 }
