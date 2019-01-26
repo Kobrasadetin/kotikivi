@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Graph;
 using Resources;
 
 namespace Interactions
@@ -11,10 +12,22 @@ namespace Interactions
         public List<ResourceTransfer> Sources = new List<ResourceTransfer>();
         public List<InteractionSpawn> Spawns = new List<InteractionSpawn>();
         public float Age;
-        public float Life;
 
-        public float FlowRate => Sinks.Sum(x => x.Amount) + Sources.Sum(y => y.Amount);
-        public bool IsDead => Age > Life;
+        public float MaxFlowRate => Sinks.Sum(x => x.Amount) + Sources.Sum(y => y.Amount);
+        public float CurrentFlowRate { get; private set; }
+
+        public void Consume(List<Resource> resources)
+        {
+            //TODO consume resources
+            //TODO add resources
+            //TODO set flow rate
+            CurrentFlowRate = MaxFlowRate;
+        }
+
+        public void Spawn(List<GraphNode> neighbors)
+        {
+            //TODO spawn interaction to neighbor nodes according to current flow rate
+        }
 
         public ResourceInteraction()
         {
@@ -26,7 +39,6 @@ namespace Interactions
             libraryEntry.Sinks.ForEach(x => Sinks.Add(x));
             libraryEntry.Sources.ForEach(x => Sources.Add(x));
             libraryEntry.Spawns.ForEach(x => Spawns.Add(x));
-            Life = libraryEntry.LifeTime;
             Age = 0;
         }
 

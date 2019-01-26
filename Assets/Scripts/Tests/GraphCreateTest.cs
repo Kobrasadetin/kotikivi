@@ -15,6 +15,8 @@ namespace Tests
             Debug.Assert(midNode != null);
             Debug.Assert(graph.Nodes[0].Neighbors.Count == 2);
             Debug.Assert(midNode.Neighbors.Count == 6);
+
+            Debug.Log("Graph create test completed");
         }
     }
 }

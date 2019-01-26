@@ -19,7 +19,6 @@ namespace Interactions
         public List<ResourceTransfer> Sinks = new List<ResourceTransfer>();
         public List<ResourceTransfer> Sources = new List<ResourceTransfer>();
         public List<InteractionSpawn> Spawns = new List<InteractionSpawn>();
-        public float LifeTime;
     }
 
     [Serializable]
