@@ -6,7 +6,7 @@ namespace Visual.InteractionImplementations
 {
     public class VisualStream : MonoBehaviour
     {
-        public ResourceStream Source;
+        public ResourceType Type;
         public float Value;
         public float Target;
         public float InterpolateDelta;

@@ -34,6 +34,8 @@ namespace Visual
             node.Interactions.ForEach(x => visualNode.SetInteractionValue(x.Id, x.CurrentFlowRate));
             visualNode.ResetResourceVisualizationTargets();
             node.Resources.ForEach(x => visualNode.SetResourceVisualizaionValue(x.Type, x.Amount));
+            visualNode.ResetStreamVisualizationTargets();
+            node.Streams.ForEach(x => x.Transfers.ForEach(y => visualNode.SetStreamVisualizaionValue(y.Type, y.Amount)));
 
             //grassiness
             float grassiness = getMedian(node, new List<ResourceType> { ResourceType.NUTRIENT, ResourceType.WARMTH });

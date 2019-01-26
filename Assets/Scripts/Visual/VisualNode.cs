@@ -13,6 +13,7 @@ namespace Visual
         public GameObject groundMesh;
         public VisualInteraction[] visualInteractions;
         public VisualResource[] visualResources;
+        public VisualStream[] visualStreams;
 
         private MeshRenderer groundMeshRenderer;
         private bool initialized;
@@ -79,6 +80,23 @@ namespace Visual
                 if (visualResource.Type == type)
                 {
                     visualResource.Target = value;
+                }
+            }
+        }
+        public void ResetStreamVisualizationTargets()
+        {
+            foreach (var visualStream in visualStreams)
+            {
+                visualStream.Target = 0;
+            }
+        }
+        public void SetStreamVisualizaionValue(ResourceType type, float value)
+        {
+            foreach (var visualStream in visualStreams)
+            {
+                if (visualStream.Type == type)
+                {
+                    visualStream.Target = value;
                 }
             }
         }

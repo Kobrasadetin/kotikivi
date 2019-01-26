@@ -14,7 +14,6 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
-            base.SetValue();
             var emission = Particles.emission;
             emission.rate = new ParticleSystem.MinMaxCurve(0.0f, InitialRate * Value);
         }
