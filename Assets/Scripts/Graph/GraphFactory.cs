@@ -110,7 +110,7 @@ namespace Graph
             // Infinite resource hex is in the middle
 
             int midNodeIndex = dimension * (dimension / 2) + (dimension / 2) - 1;
-            result.Nodes[midNodeIndex].ResourceInteractions.Add(new ResourceInteraction()
+            result.Nodes[midNodeIndex].Interactions.Add(new ResourceInteraction()
             {
                 Type = InterActionType.HOME,
                 Sources =
@@ -131,5 +131,6 @@ namespace Graph
             midNode = result.Nodes[midNodeIndex];
             return result;
         }
+
     }
 }

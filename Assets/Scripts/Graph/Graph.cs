@@ -10,5 +10,11 @@ namespace Graph
     {
         public List<GraphNode> Nodes = new List<GraphNode>();
         public List<ResourceStream> Streams = new List<ResourceStream>();
+
+        public void Tick()
+        {
+            Streams.ForEach(x => x.Tick());
+            Nodes.ForEach(x => x.Tick());
+        }
     }
 }
