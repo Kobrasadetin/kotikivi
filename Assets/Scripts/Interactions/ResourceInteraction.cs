@@ -22,7 +22,7 @@ namespace Interactions
         private float _spawnCounter;
 
         public float MaxFlowRate => Sinks.Sum(x => x.Amount) + Sources.Sum(y => y.Amount);
-        public float CurrentFlowRate { get; private set; }
+        public float CurrentFlowRate { get; private set; } = 1f;
         public bool IsDead => CurrentFlowRate <= 0f;
 
         public void Consume(List<Resource> resources)
@@ -38,7 +38,7 @@ namespace Interactions
                 else
                 {
                     float sourceAmount = resources.First(y => y.Type == x.Type).Amount;
-                    float thisAvailability = Mathf.Max(1f, sourceAmount / x.Amount);
+                    float thisAvailability = Mathf.Min(1f, sourceAmount / x.Amount);
                     availability = Mathf.Min(availability, thisAvailability);
                 }
             });
@@ -49,7 +49,11 @@ namespace Interactions
             }
 
             // consume resources
-            Sinks.ForEach(x => { resources.First(y => y.Type == x.Type).Amount -= x.Amount * availability; });
+            Sinks.ForEach(x =>
+            {
+                var resource = resources.First(y => y.Type == x.Type);
+                resource.Amount = Mathf.Max(0f, resource.Amount - x.Amount * availability);
+            });
 
             // add resources
             Sources.ForEach(x =>

@@ -31,6 +31,65 @@ MonoBehaviour:
     Spawns:
     - Id: Basic Grass
       Magnitude: 0.5
+      Dependencies:
+      - Id: Basic Grass
+        Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+        Type: 1
+        Sinks:
+        - Type: 0
+          Amount: 0.2
+        - Type: 1
+          Amount: 0.1
+        - Type: 5
+          Amount: 0.1
+        Sources:
+        - Type: 8
+          Amount: 0.1
+        - Type: 4
+          Amount: 0.5
+        Spawns:
+        - Id: Basic Grass
+          Magnitude: 0.5
+          Dependencies:
+          - Id: Basic Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.2
+            - Type: 1
+              Amount: 0.1
+            - Type: 5
+              Amount: 0.1
+            Sources:
+            - Type: 8
+              Amount: 0.1
+            - Type: 4
+              Amount: 0.5
+            Spawns:
+            - Id: Basic Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
   - Id: Tall Grass
     Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
     Type: 1
@@ -47,25 +106,723 @@ MonoBehaviour:
     Spawns:
     - Id: Tall Grass
       Magnitude: 0.5
-    - Id: Basic  Grass
+      Dependencies:
+      - Id: Tall Grass
+        Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+        Type: 1
+        Sinks:
+        - Type: 0
+          Amount: 0.4
+        - Type: 1
+          Amount: 0.2
+        - Type: 5
+          Amount: 0.2
+        Sources:
+        - Type: 8
+          Amount: 0.2
+        Spawns:
+        - Id: Tall Grass
+          Magnitude: 0.5
+          Dependencies:
+          - Id: Tall Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.4
+            - Type: 1
+              Amount: 0.2
+            - Type: 5
+              Amount: 0.2
+            Sources:
+            - Type: 8
+              Amount: 0.2
+            Spawns:
+            - Id: Tall Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Tall Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.4
+                - Type: 1
+                  Amount: 0.2
+                - Type: 5
+                  Amount: 0.2
+                Sources:
+                - Type: 8
+                  Amount: 0.2
+                Spawns:
+                - Id: Tall Grass
+                  Magnitude: 0.5
+                - Id: Basic Grass
+                  Magnitude: 0.2
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+            - Id: Basic Grass
+              Magnitude: 0.2
+              Dependencies:
+              - Id: Tall Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.4
+                - Type: 1
+                  Amount: 0.2
+                - Type: 5
+                  Amount: 0.2
+                Sources:
+                - Type: 8
+                  Amount: 0.2
+                Spawns:
+                - Id: Tall Grass
+                  Magnitude: 0.5
+                - Id: Basic Grass
+                  Magnitude: 0.2
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+          - Id: Basic Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.2
+            - Type: 1
+              Amount: 0.1
+            - Type: 5
+              Amount: 0.1
+            Sources:
+            - Type: 8
+              Amount: 0.1
+            - Type: 4
+              Amount: 0.5
+            Spawns:
+            - Id: Basic Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+        - Id: Basic Grass
+          Magnitude: 0.2
+          Dependencies:
+          - Id: Tall Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.4
+            - Type: 1
+              Amount: 0.2
+            - Type: 5
+              Amount: 0.2
+            Sources:
+            - Type: 8
+              Amount: 0.2
+            Spawns:
+            - Id: Tall Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Tall Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.4
+                - Type: 1
+                  Amount: 0.2
+                - Type: 5
+                  Amount: 0.2
+                Sources:
+                - Type: 8
+                  Amount: 0.2
+                Spawns:
+                - Id: Tall Grass
+                  Magnitude: 0.5
+                - Id: Basic Grass
+                  Magnitude: 0.2
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+            - Id: Basic Grass
+              Magnitude: 0.2
+              Dependencies:
+              - Id: Tall Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.4
+                - Type: 1
+                  Amount: 0.2
+                - Type: 5
+                  Amount: 0.2
+                Sources:
+                - Type: 8
+                  Amount: 0.2
+                Spawns:
+                - Id: Tall Grass
+                  Magnitude: 0.5
+                - Id: Basic Grass
+                  Magnitude: 0.2
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+          - Id: Basic Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.2
+            - Type: 1
+              Amount: 0.1
+            - Type: 5
+              Amount: 0.1
+            Sources:
+            - Type: 8
+              Amount: 0.1
+            - Type: 4
+              Amount: 0.5
+            Spawns:
+            - Id: Basic Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+      - Id: Basic Grass
+        Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+        Type: 1
+        Sinks:
+        - Type: 0
+          Amount: 0.2
+        - Type: 1
+          Amount: 0.1
+        - Type: 5
+          Amount: 0.1
+        Sources:
+        - Type: 8
+          Amount: 0.1
+        - Type: 4
+          Amount: 0.5
+        Spawns:
+        - Id: Basic Grass
+          Magnitude: 0.5
+          Dependencies:
+          - Id: Basic Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.2
+            - Type: 1
+              Amount: 0.1
+            - Type: 5
+              Amount: 0.1
+            Sources:
+            - Type: 8
+              Amount: 0.1
+            - Type: 4
+              Amount: 0.5
+            Spawns:
+            - Id: Basic Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+    - Id: Basic Grass
       Magnitude: 0.2
+      Dependencies:
+      - Id: Tall Grass
+        Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+        Type: 1
+        Sinks:
+        - Type: 0
+          Amount: 0.4
+        - Type: 1
+          Amount: 0.2
+        - Type: 5
+          Amount: 0.2
+        Sources:
+        - Type: 8
+          Amount: 0.2
+        Spawns:
+        - Id: Tall Grass
+          Magnitude: 0.5
+          Dependencies:
+          - Id: Tall Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.4
+            - Type: 1
+              Amount: 0.2
+            - Type: 5
+              Amount: 0.2
+            Sources:
+            - Type: 8
+              Amount: 0.2
+            Spawns:
+            - Id: Tall Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Tall Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.4
+                - Type: 1
+                  Amount: 0.2
+                - Type: 5
+                  Amount: 0.2
+                Sources:
+                - Type: 8
+                  Amount: 0.2
+                Spawns:
+                - Id: Tall Grass
+                  Magnitude: 0.5
+                - Id: Basic Grass
+                  Magnitude: 0.2
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+            - Id: Basic Grass
+              Magnitude: 0.2
+              Dependencies:
+              - Id: Tall Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.4
+                - Type: 1
+                  Amount: 0.2
+                - Type: 5
+                  Amount: 0.2
+                Sources:
+                - Type: 8
+                  Amount: 0.2
+                Spawns:
+                - Id: Tall Grass
+                  Magnitude: 0.5
+                - Id: Basic Grass
+                  Magnitude: 0.2
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+          - Id: Basic Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.2
+            - Type: 1
+              Amount: 0.1
+            - Type: 5
+              Amount: 0.1
+            Sources:
+            - Type: 8
+              Amount: 0.1
+            - Type: 4
+              Amount: 0.5
+            Spawns:
+            - Id: Basic Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+        - Id: Basic Grass
+          Magnitude: 0.2
+          Dependencies:
+          - Id: Tall Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.4
+            - Type: 1
+              Amount: 0.2
+            - Type: 5
+              Amount: 0.2
+            Sources:
+            - Type: 8
+              Amount: 0.2
+            Spawns:
+            - Id: Tall Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Tall Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.4
+                - Type: 1
+                  Amount: 0.2
+                - Type: 5
+                  Amount: 0.2
+                Sources:
+                - Type: 8
+                  Amount: 0.2
+                Spawns:
+                - Id: Tall Grass
+                  Magnitude: 0.5
+                - Id: Basic Grass
+                  Magnitude: 0.2
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+            - Id: Basic Grass
+              Magnitude: 0.2
+              Dependencies:
+              - Id: Tall Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.4
+                - Type: 1
+                  Amount: 0.2
+                - Type: 5
+                  Amount: 0.2
+                Sources:
+                - Type: 8
+                  Amount: 0.2
+                Spawns:
+                - Id: Tall Grass
+                  Magnitude: 0.5
+                - Id: Basic Grass
+                  Magnitude: 0.2
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+          - Id: Basic Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.2
+            - Type: 1
+              Amount: 0.1
+            - Type: 5
+              Amount: 0.1
+            Sources:
+            - Type: 8
+              Amount: 0.1
+            - Type: 4
+              Amount: 0.5
+            Spawns:
+            - Id: Basic Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
+      - Id: Basic Grass
+        Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+        Type: 1
+        Sinks:
+        - Type: 0
+          Amount: 0.2
+        - Type: 1
+          Amount: 0.1
+        - Type: 5
+          Amount: 0.1
+        Sources:
+        - Type: 8
+          Amount: 0.1
+        - Type: 4
+          Amount: 0.5
+        Spawns:
+        - Id: Basic Grass
+          Magnitude: 0.5
+          Dependencies:
+          - Id: Basic Grass
+            Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+              type: 0}
+            Type: 1
+            Sinks:
+            - Type: 0
+              Amount: 0.2
+            - Type: 1
+              Amount: 0.1
+            - Type: 5
+              Amount: 0.1
+            Sources:
+            - Type: 8
+              Amount: 0.1
+            - Type: 4
+              Amount: 0.5
+            Spawns:
+            - Id: Basic Grass
+              Magnitude: 0.5
+              Dependencies:
+              - Id: Basic Grass
+                Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000,
+                  type: 0}
+                Type: 1
+                Sinks:
+                - Type: 0
+                  Amount: 0.2
+                - Type: 1
+                  Amount: 0.1
+                - Type: 5
+                  Amount: 0.1
+                Sources:
+                - Type: 8
+                  Amount: 0.1
+                - Type: 4
+                  Amount: 0.5
+                Spawns:
+                - Id: Basic Grass
+                  Magnitude: 0.5
   - Id: Ants
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 6
     Sinks:
     - Type: 4
-      Amount: 0.4
-    - Type: 10
-      Amount: 0.4
+      Amount: 0.1
+    - Type: 7
+      Amount: 0.1
     - Type: 6
-      Amount: 0.4
+      Amount: 0.1
     Sources:
     - Type: 6
       Amount: 0.2
-    - Type: 10
+    - Type: 9
       Amount: 0.1
-    Spawns:
-    - Id: Tall Grass
-      Magnitude: 0.5
-    - Id: Basic  Grass
-      Magnitude: 0.2
+    Spawns: []

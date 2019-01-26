@@ -24,7 +24,7 @@ namespace Tests
             // drop random interactions
             GraphSingleton.Graph.Nodes.ForEach(x =>
             {
-                if (Random.Range(0f, 1f) < 0.25f)
+                if (Random.Range(0f, 1f) < 0.5f)
                 {
                     List<LibraryEntry> dependencies = new List<LibraryEntry>();
                     var randomInteraction = InteractionLibrary.GetRandomInteraction(out dependencies);

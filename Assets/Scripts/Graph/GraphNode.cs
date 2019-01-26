@@ -28,6 +28,7 @@ namespace Graph
         {
             Interactions.ForEach(x => x.Consume(Resources));
             Interactions.ForEach(x => x.Spawn(Neighbors));
+            Interactions.ForEach(x => x.Tick());
         }
     }
 }
