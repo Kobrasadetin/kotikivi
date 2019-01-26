@@ -22,7 +22,13 @@ namespace Interactions
 
         public ResourceInteraction(LibraryEntry libraryEntry)
         {
-
+            Type = libraryEntry.Type;
+            libraryEntry.Sinks.ForEach(x => Sinks.Add(x));
+            libraryEntry.Sources.ForEach(x => Sources.Add(x));
+            libraryEntry.Spawns.ForEach(x => Spawns.Add(x));
+            Life = libraryEntry.LifeTime;
+            Age = 0;
         }
+
     }
 }

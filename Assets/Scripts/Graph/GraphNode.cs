@@ -22,5 +22,10 @@ namespace Graph
                 Resources.Add(Resource.GetRandom((ResourceType)i));
             }
         }
+
+        public void Tick()
+        {
+            //TODO operate all streams and interactions
+        }
     }
 }
