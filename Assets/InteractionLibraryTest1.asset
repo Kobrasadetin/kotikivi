@@ -69,3 +69,51 @@ MonoBehaviour:
     - Type: 0
       Amount: 0.5
     Spawns: []
+  - Id: Bushes
+    Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    Type: 9
+    Sinks:
+    - Type: 0
+      Amount: 0.2
+    - Type: 1
+      Amount: 0.3
+    - Type: 2
+      Amount: 0.3
+    Sources:
+    - Type: 2
+      Amount: 0.1
+    Spawns:
+    - Id: Bushes
+      Threshold: 20
+  - Id: Leafy Trees
+    Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    Type: 8
+    Sinks:
+    - Type: 0
+      Amount: 0.1
+    - Type: 1
+      Amount: 0.5
+    - Type: 2
+      Amount: 0.5
+    Sources:
+    - Type: 2
+      Amount: 0.2
+    Spawns:
+    - Id: Leafy Trees
+      Threshold: 30
+  - Id: Conifers
+    Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    Type: 10
+    Sinks:
+    - Type: 0
+      Amount: 0
+    - Type: 1
+      Amount: 0.7
+    - Type: 2
+      Amount: 0.4
+    Sources:
+    - Type: 2
+      Amount: 0.3
+    Spawns:
+    - Id: Conifers
+      Threshold: 40
