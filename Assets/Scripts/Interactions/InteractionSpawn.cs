@@ -10,7 +10,7 @@ namespace Interactions
     {
         public string Id;
         [FormerlySerializedAs("Magnitude")] public float Threshold;
-        [FormerlySerializedAs("LibraryEntries")] [HideInInspector]
+        [NonSerialized]
         public List<LibraryEntry> Dependencies;
     }
 }
