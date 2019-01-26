@@ -8,7 +8,6 @@ namespace Visual
     public class VisualRoot : MonoBehaviour
     {
         public VisualizationLibrary visualizationLibrary;
-        public GameObject runePrefab;
 
         private Graph.Graph graph;
         private BasicPrefabEvaluator evaluator;
