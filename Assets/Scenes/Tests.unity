@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GraphSingleton: {fileID: 436872243}
   InteractionLibrary: {fileID: 11400000, guid: 20735924490994edca9d86f94eff6896, type: 2}
+  GenerateDebugNodes: 1
 --- !u!1 &437894249
 GameObject:
   m_ObjectHideFlags: 0

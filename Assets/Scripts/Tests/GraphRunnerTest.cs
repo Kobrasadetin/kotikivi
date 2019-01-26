@@ -14,6 +14,7 @@ namespace Tests
     {
         public GraphSingleton GraphSingleton;
         public InteractionLibrary InteractionLibrary;
+        public bool GenerateDebugNodes;
 
         void Start()
         {
@@ -31,10 +32,14 @@ namespace Tests
                     var resourceInteraction = new ResourceInteraction(randomInteraction, dependencies);
                     x.Interactions.Add(resourceInteraction);
                 }
-                var debug = new GameObject();
-                var debugComponent = debug.AddComponent<GraphDebug>();
-                debugComponent.Node = x;
-                debug.transform.SetParent(transform);
+
+                if (GenerateDebugNodes)
+                {
+                    var debug = new GameObject();
+                    var debugComponent = debug.AddComponent<GraphDebug>();
+                    debugComponent.Node = x;
+                    debug.transform.SetParent(transform);
+                }
             });
         }
 
