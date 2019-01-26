@@ -120,7 +120,6 @@ namespace Graph
                     new ResourceTransfer(){ Type = ResourceType.DUNG, Amount = 100f},
                     new ResourceTransfer(){ Type = ResourceType.ROTTING_PLANTS, Amount = 100f},
                     new ResourceTransfer(){ Type = ResourceType.GREEN_PLANTS, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.LIVE_ANIMALS, Amount = 100f},
                     new ResourceTransfer(){ Type = ResourceType.BERRIES, Amount = 100f},
                     new ResourceTransfer(){ Type = ResourceType.CARCASSES, Amount = 100f},
                 }

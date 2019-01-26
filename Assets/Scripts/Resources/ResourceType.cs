@@ -14,7 +14,6 @@ namespace Resources
         DUNG,
         BERRIES,
         GREEN_PLANTS,
-        LIVE_ANIMALS,
         CARCASSES
     }
 }
