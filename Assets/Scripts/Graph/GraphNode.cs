@@ -17,6 +17,7 @@ namespace Graph
         public List<GraphNode> Neighbors = new List<GraphNode>();
         public List<Resource> Resources = new List<Resource>();
         public List<ResourceInteraction> Interactions = new List<ResourceInteraction>();
+        public List<ResourceStream> Streams = new List<ResourceStream>();
 
         public void InitRandomResources()
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Visual.InteractionImplementations
 {
-    public class ParticleSystemRateInteraction : VisualInteraction
+    public class ParticleSystemRateStream : VisualStream
     {
         public ParticleSystem Particles;
         private float InitialRate;
