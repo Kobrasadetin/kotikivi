@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Graph;
+using Interactions;
 using Resources;
 using UnityEngine;
 
@@ -19,18 +20,26 @@ namespace PowerLines
 
     public class PowerStream
     {
-        public GraphNode Home;
-        public List<ResourceStream> Generators { get; private set; } = new List<ResourceStream>();
-
-        public PowerStream(GraphNode home, PowerRuneType a, PowerRuneType b, StreamAngle angle, float power, float gradient)
+        public PowerStream(Graph.Graph graph, InteractionLibrary library, PowerRuneType a, PowerRuneType b, StreamAngle angle, float power, float gradient)
         {
-            Home = home;
+            List<ResourceType> resourceTypes = new List<ResourceType>();
+            resourceTypes.Add(PowerRuneMixer.GetResourceType(a));
+            resourceTypes.Add(PowerRuneMixer.GetResourceType(b));
+            InterActionType interActionType = PowerRuneMixer.GetMix(new PowerRuneType[] {a, b});
+            List<LibraryEntry> dependencies;
+            LibraryEntry spawnType = library.GetRandomInteractionOfType(interActionType, out dependencies);
             // iterate to a direction
             float mainPower = power;
-            GraphNode iter = Home.GetNeighborInDirection(angle);
+            GraphNode iter = graph.HomeNode.GetNeighborInDirection(angle);
             while (iter != null && mainPower > 0)
             {
-                // drop resourcestream
+                // create resourcestream
+                var stream = new ResourceStream();
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[0], Amount = mainPower});
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[1], Amount = mainPower});
+                stream.Interactions.Add(new ResourceInteraction(spawnType, dependencies));
+                stream.Target = iter;
+                graph.Streams.Add(stream);
 
                 // gradient power decay
                 mainPower = Mathf.Max(0f, mainPower - gradient);
@@ -38,10 +47,16 @@ namespace PowerLines
             }
             // iterate to b direction
             mainPower = power;
-            iter = Home.GetNeighborInDirection(GetOppositeAngle(angle));
+            iter = graph.HomeNode.GetNeighborInDirection(GetOppositeAngle(angle));
             while (iter != null && mainPower > 0)
             {
                 // drop resourcestream
+                var stream = new ResourceStream();
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[0], Amount = mainPower});
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[1], Amount = mainPower});
+                stream.Interactions.Add(new ResourceInteraction(spawnType, dependencies));
+                stream.Target = iter;
+                graph.Streams.Add(stream);
 
                 // gradient power decay
                 mainPower = Mathf.Max(0f, mainPower - gradient);
@@ -49,9 +64,51 @@ namespace PowerLines
             }
         }
 
-        public PowerStream(GraphNode home, PowerRuneType a, PowerRuneType b, PowerRuneType c, StreamAngle angle, float power, float gradient)
+        public PowerStream(Graph.Graph graph, InteractionLibrary library, PowerRuneType a, PowerRuneType b, PowerRuneType c, StreamAngle angle, float power, float gradient)
         {
-            Home = home;
+            List<ResourceType> resourceTypes = new List<ResourceType>();
+            resourceTypes.Add(PowerRuneMixer.GetResourceType(a));
+            resourceTypes.Add(PowerRuneMixer.GetResourceType(b));
+            resourceTypes.Add(PowerRuneMixer.GetResourceType(c));
+            InterActionType interActionType = PowerRuneMixer.GetMix(new PowerRuneType[] {a, b, c});
+            List<LibraryEntry> dependencies;
+            LibraryEntry spawnType = library.GetRandomInteractionOfType(interActionType, out dependencies);
+            // iterate to a direction
+            float mainPower = power;
+            GraphNode iter = graph.HomeNode.GetNeighborInDirection(angle);
+            while (iter != null && mainPower > 0)
+            {
+                // create resourcestream
+                var stream = new ResourceStream();
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[0], Amount = mainPower});
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[1], Amount = mainPower});
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[2], Amount = mainPower});
+                stream.Interactions.Add(new ResourceInteraction(spawnType, dependencies));
+                stream.Target = iter;
+                graph.Streams.Add(stream);
+
+                // gradient power decay
+                mainPower = Mathf.Max(0f, mainPower - gradient);
+                iter = iter.GetNeighborInDirection(angle);
+            }
+            // iterate to b direction
+            mainPower = power;
+            iter = graph.HomeNode.GetNeighborInDirection(GetOppositeAngle(angle));
+            while (iter != null && mainPower > 0)
+            {
+                // drop resourcestream
+                var stream = new ResourceStream();
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[0], Amount = mainPower});
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[1], Amount = mainPower});
+                stream.Transfers.Add(new ResourceTransfer() { Type = resourceTypes[2], Amount = mainPower});
+                stream.Interactions.Add(new ResourceInteraction(spawnType, dependencies));
+                stream.Target = iter;
+                graph.Streams.Add(stream);
+
+                // gradient power decay
+                mainPower = Mathf.Max(0f, mainPower - gradient);
+                iter = iter.GetNeighborInDirection(GetOppositeAngle(angle));
+            }
         }
 
         private static StreamAngle GetOppositeAngle(StreamAngle angle)

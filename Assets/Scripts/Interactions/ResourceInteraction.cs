@@ -52,7 +52,7 @@ namespace Interactions
             Sinks.ForEach(x =>
             {
                 var resource = resources.First(y => y.Type == x.Type);
-                resource.Amount = Mathf.Max(0f, resource.Amount - x.Amount * availability);
+                resource.Sink(x.Amount * availability);
             });
 
             // add resources
@@ -64,7 +64,7 @@ namespace Interactions
                 }
                 else
                 {
-                    resources.First(y => y.Type == x.Type).Amount += x.Amount * availability;
+                    resources.First(y => y.Type == x.Type).Source(x.Amount * availability);
                 }
             });
 
