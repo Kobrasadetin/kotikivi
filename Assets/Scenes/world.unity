@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6cdde522b902a4bb9128d4f02cacb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragSpeed: 0.2
+  dragSpeed: 0.05
   inertia: {x: 0, y: 0, z: 0}
 --- !u!114 &417489891
 MonoBehaviour:
