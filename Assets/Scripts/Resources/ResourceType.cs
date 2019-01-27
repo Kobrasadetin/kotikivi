@@ -8,7 +8,11 @@ namespace Resources
         WARMTH,
         WATER,
         NUTRIENT,
-        LIGTH
+        LIGTH,
+        PLANTS,
+        BERRIES,
+        CARCASSES,
+        SEEDS
     }
 
     public static class ResourceCap
