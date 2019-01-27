@@ -14,6 +14,7 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
+            Source.gameObject.SetActive(Value > 0.01f);
             Source.volume = Value * InitialVolume;
         }
     }

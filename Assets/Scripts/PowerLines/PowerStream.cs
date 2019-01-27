@@ -40,6 +40,7 @@ namespace PowerLines
                 stream.Interactions.Add(new ResourceInteraction(spawnType, dependencies));
                 stream.Target = iter;
                 graph.Streams.Add(stream);
+                iter.Streams.Add(stream);
 
                 // gradient power decay
                 mainPower = Mathf.Max(0f, mainPower - gradient);
@@ -57,6 +58,7 @@ namespace PowerLines
                 stream.Interactions.Add(new ResourceInteraction(spawnType, dependencies));
                 stream.Target = iter;
                 graph.Streams.Add(stream);
+                iter.Streams.Add(stream);
 
                 // gradient power decay
                 mainPower = Mathf.Max(0f, mainPower - gradient);
@@ -86,6 +88,7 @@ namespace PowerLines
                 stream.Interactions.Add(new ResourceInteraction(spawnType, dependencies));
                 stream.Target = iter;
                 graph.Streams.Add(stream);
+                iter.Streams.Add(stream);
 
                 // gradient power decay
                 mainPower = Mathf.Max(0f, mainPower - gradient);
@@ -104,6 +107,7 @@ namespace PowerLines
                 stream.Interactions.Add(new ResourceInteraction(spawnType, dependencies));
                 stream.Target = iter;
                 graph.Streams.Add(stream);
+                iter.Streams.Add(stream);
 
                 // gradient power decay
                 mainPower = Mathf.Max(0f, mainPower - gradient);

@@ -19,6 +19,7 @@ namespace Tests
         void Reset()
         {
             Graph.Graph graph = GraphSingleton.Instance.Graph;
+            graph.Streams.ForEach(x => x.Target.Streams.Clear());
             graph.Streams.Clear();
 
             if (Types.Length < 2 || Types.Length > 3)

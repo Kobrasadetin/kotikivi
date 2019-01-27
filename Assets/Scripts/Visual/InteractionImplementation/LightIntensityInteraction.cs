@@ -15,6 +15,7 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
+            Lght.gameObject.SetActive(Value > 0.01f);
             Lght.intensity = Value * initialIntensity;
         }
     }

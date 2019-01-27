@@ -29,7 +29,7 @@ MonoBehaviour:
       Threshold: 10
   - Id: Tall Grass
     Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-    Type: 9
+    Type: 4
     Sinks:
     - Type: 0
       Amount: 0.4
@@ -68,4 +68,102 @@ MonoBehaviour:
       Amount: 0.5
     - Type: 0
       Amount: 0.5
+    Spawns: []
+  - Id: Flowers
+    Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    Type: 4
+    Sinks:
+    - Type: 0
+      Amount: 0.2
+    - Type: 2
+      Amount: 0.1
+    - Type: 3
+      Amount: 0.1
+    Sources:
+    - Type: 0
+      Amount: 0.1
+    - Type: 2
+      Amount: 0.1
+    Spawns:
+    - Id: Flowers
+      Threshold: 10
+  - Id: Bushes
+    Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    Type: 9
+    Sinks:
+    - Type: 0
+      Amount: 0.1
+    - Type: 2
+      Amount: 0.1
+    - Type: 3
+      Amount: 0.1
+    Sources:
+    - Type: 0
+      Amount: 0.1
+    - Type: 2
+      Amount: 0.2
+    Spawns:
+    - Id: Bushes
+      Threshold: 20
+  - Id: Conifers
+    Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    Type: 10
+    Sinks:
+    - Type: 1
+      Amount: 0.5
+    - Type: 2
+      Amount: 0.5
+    - Type: 3
+      Amount: 0.6
+    Sources:
+    - Type: 0
+      Amount: 0.3
+    - Type: 2
+      Amount: 0.2
+    Spawns:
+    - Id: Conifers
+      Threshold: 100
+  - Id: Leafy Greens
+    Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    Type: 8
+    Sinks:
+    - Type: 1
+      Amount: 0.4
+    - Type: 2
+      Amount: 0.6
+    - Type: 3
+      Amount: 0.8
+    Sources:
+    - Type: 0
+      Amount: 0.5
+    - Type: 2
+      Amount: 0.3
+    - Type: 1
+      Amount: 0.05
+    Spawns:
+    - Id: Leafy Greens
+      Threshold: 70
+  - Id: Mushrooms
+    Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    Type: 1
+    Sinks:
+    - Type: 0
+      Amount: 0.2
+    - Type: 1
+      Amount: 0.2
+    Sources:
+    - Type: 2
+      Amount: 1
+    Spawns:
+    - Id: Mushrooms
+      Threshold: 5
+  - Id: Rain
+    Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    Type: 5
+    Sinks:
+    - Type: 0
+      Amount: 0.5
+    Sources:
+    - Type: 1
+      Amount: 1
     Spawns: []

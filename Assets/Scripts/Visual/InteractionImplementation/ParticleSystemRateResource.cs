@@ -1,0 +1,22 @@
+using UnityEngine;
+
+namespace Visual.InteractionImplementations
+{
+    public class ParticleSystemRateResource : VisualResource
+    {
+        public ParticleSystem Particles;
+        private float InitialRate;
+
+        void Start()
+        {
+            InitialRate = Particles.emission.rate.constantMax;
+        }
+
+        public override void SetValue()
+        {
+            Particles.gameObject.SetActive(Value > 0.01f);
+            var emission = Particles.emission;
+            emission.rate = new ParticleSystem.MinMaxCurve(0.0f, InitialRate * Value);
+        }
+    }
+}

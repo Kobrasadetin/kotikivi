@@ -1,5 +1,7 @@
 ﻿using Graph;
 using System.Collections.Generic;
+using Interactions;
+using Resources;
 using UnityEngine;
 using Visual.InteractionImplementations;
 
@@ -11,6 +13,8 @@ namespace Visual
         public GraphNode node;
         public GameObject groundMesh;
         public VisualInteraction[] visualInteractions;
+        public VisualResource[] visualResources;
+        public VisualStream[] visualStreams;
 
         private MeshRenderer groundMeshRenderer;
         private bool initialized;
@@ -46,7 +50,6 @@ namespace Visual
         {
             groundMeshRenderer.material.SetColor("_Color", color);
         }
-
         public void ResetInteractionTargets()
         {
             foreach (var visualInteraction in visualInteractions)
@@ -61,6 +64,50 @@ namespace Visual
                 if (visualInteraction.Id == Id)
                 {
                     visualInteraction.Target = value;
+                }
+            }
+        }
+        public void ResetResourceVisualizationTargets()
+        {
+            foreach (var visualResource in visualResources)
+            {
+                visualResource.Target = 0;
+            }
+        }
+        public void SetResourceVisualizaionValue(ResourceType type, float value)
+        {
+            foreach (var visualResource in visualResources)
+            {
+                if (visualResource.Type == type)
+                {
+                    visualResource.Target = value;
+                }
+            }
+        }
+        public void ResetStreamVisualizationTargets()
+        {
+            foreach (var visualStream in visualStreams)
+            {
+                visualStream.Target = 0;
+            }
+        }
+        public void SetStreamVisualizaionValue(ResourceType type, float value)
+        {
+            foreach (var visualStream in visualStreams)
+            {
+                if (visualStream.Type == type)
+                {
+                    visualStream.Target = value;
+                }
+            }
+        }
+        public void SetStreamVisualizaionValue(InterActionType type, float value)
+        {
+            foreach (var visualStream in visualStreams)
+            {
+                if (visualStream.IType == type)
+                {
+                    visualStream.Target = value;
                 }
             }
         }
