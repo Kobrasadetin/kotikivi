@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharacter : MonoBehaviour
+namespace Dynamic
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerCharacter : DynamicObject
     {
-        
-    }
+        public PlayerCharacter(Vector3 position) : base(position)
+        {
+            this.prefab = UnityEngine.Resources.Load<GameObject>("Cat/Player");
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }
