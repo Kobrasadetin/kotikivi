@@ -11,7 +11,17 @@ ModelImporter:
     4300000: Circle
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grassy__359_png
+    second: {fileID: 2100000, guid: 02157773ec42e0f41a221df4e700e0f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sides__269_png
+    second: {fileID: 2100000, guid: 8f503b7aaccdff743b6f7ca2889783a8, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
