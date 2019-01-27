@@ -10,8 +10,8 @@ namespace Visual
     public class BasicPrefabEvaluator : PrefabChangeEvaluator
     {
         private VisualizationLibrary library;
-        static Color green = new Color(0.117f, 0.760f, 0.219f);
-        static Color brown = new Color(0.470f, 0.239f, 0.207f);
+        static Color green = new Color(0.117f, 0.730f, 0.229f);
+        static Color brown = new Color(0.510f, 0.199f, 0.187f);
 
         public BasicPrefabEvaluator(VisualizationLibrary library)
         {
