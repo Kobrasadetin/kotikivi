@@ -69,7 +69,7 @@ namespace Interactions
             });
 
             // set flow rate
-            CurrentFlowRate = MaxFlowRate * availability;
+            CurrentFlowRate = availability;
         }
 
         public void Spawn(List<GraphNode> neighbors)
@@ -113,6 +113,7 @@ namespace Interactions
                 Spawns.Add(x);
                 Spawns[Spawns.Count - 1].Dependencies = dependencies;
                 Spawns[Spawns.Count - 1].Threshold = x.Threshold;
+                _spawnRate = Mathf.Max(x.Threshold, _spawnRate);
             });
             Age = 0;
         }
