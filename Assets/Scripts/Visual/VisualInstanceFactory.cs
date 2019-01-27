@@ -17,12 +17,17 @@ namespace Visual
         };
 
         private static GameObject homeResource = UnityEngine.Resources.Load<GameObject>("GroundNode Home");
+        private static GameObject homeRingResource = UnityEngine.Resources.Load<GameObject>("GroundNode HomeRing");
         public static VisualNode CreateTile(Transform parentTransform, Graph.GraphNode node, BasicPrefabEvaluator evaluator)
         {
             GameObject newGO;
             if (node.Interactions.Exists(x => x.Type == InterActionType.HOME))
             {
                 newGO = Object.Instantiate<GameObject>(homeResource, Vector3.zero, Quaternion.identity);
+            }
+            else if (node.Neighbors.Exists(x => x.Interactions.Exists(y => y.Type == InterActionType.HOME)))
+            {
+                newGO = Object.Instantiate<GameObject>(homeRingResource, Vector3.zero, Quaternion.identity);
             }
             else
             {
