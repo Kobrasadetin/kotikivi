@@ -43,6 +43,14 @@ namespace Graph
             }
         }
 
+        private void AddGroundWater()
+        {
+            if (Resources.Exists(x => x.Type == ResourceType.WATER))
+            {
+                Resources.First(x => x.Type == ResourceType.WATER).Source(0.1f);
+            }
+        }
+
         public GraphNode GetNeighborInDirection(StreamAngle direction)
         {
             if (Coordinate.y % 2 == 0)

@@ -101,16 +101,16 @@ namespace Visual
                 }
             }
         }
-        public void SetStreamVisualizaionValue(InterActionType type, float value)
-        {
-            foreach (var visualStream in visualStreams)
-            {
-                if (visualStream.IType == type)
-                {
-                    visualStream.Target = value;
-                }
-            }
-        }
+//        public void SetStreamVisualizaionValue(InterActionType type, float value)
+//        {
+//            foreach (var visualStream in visualStreams)
+//            {
+//                if (visualStream.IType == type)
+//                {
+//                    visualStream.Target = value;
+//                }
+//            }
+//        }
 
         public void Initialize(GraphNode node, PrefabChangeEvaluator prefabChangeEvaluator)
         {

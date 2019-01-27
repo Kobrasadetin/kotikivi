@@ -20,7 +20,7 @@ MonoBehaviour:
     - Type: 3
       Amount: 0.2
     - Type: 2
-      Amount: 0.05
+      Amount: 0.025
     - Type: 1
       Amount: 0.05
     Sources:
@@ -38,7 +38,7 @@ MonoBehaviour:
     - Type: 1
       Amount: 0.1
     - Type: 2
-      Amount: 0.1
+      Amount: 0.05
     Sources:
     - Type: 4
       Amount: 0.1
@@ -51,16 +51,16 @@ MonoBehaviour:
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 7
     Sinks:
-    - Type: 4
-      Amount: 0.3
     - Type: 1
+      Amount: 0.01
+    - Type: 4
       Amount: 0.01
     Sources:
     - Type: 2
       Amount: 0.3
     Spawns:
     - Id: Ants
-      Threshold: 30
+      Threshold: 5
   - Id: Sun
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 3
@@ -78,7 +78,7 @@ MonoBehaviour:
     - Type: 1
       Amount: 0.1
     - Type: 2
-      Amount: 0.1
+      Amount: 0.05
     - Type: 3
       Amount: 0.2
     Sources:
@@ -94,7 +94,7 @@ MonoBehaviour:
     Type: 9
     Sinks:
     - Type: 2
-      Amount: 0.1
+      Amount: 0.05
     - Type: 1
       Amount: 0.1
     - Type: 3
@@ -114,7 +114,7 @@ MonoBehaviour:
     - Type: 1
       Amount: 0.15
     - Type: 2
-      Amount: 0.2
+      Amount: 0.1
     - Type: 3
       Amount: 0.3
     Sources:
@@ -132,7 +132,7 @@ MonoBehaviour:
     - Type: 1
       Amount: 0.2
     - Type: 2
-      Amount: 0.2
+      Amount: 0.1
     - Type: 3
       Amount: 0.4
     Sources:
@@ -147,9 +147,11 @@ MonoBehaviour:
     Sinks:
     - Type: 1
       Amount: 0.1
+    - Type: 4
+      Amount: 0.05
+    Sources:
     - Type: 2
       Amount: 0.05
-    Sources: []
     Spawns:
     - Id: Mushrooms
       Threshold: 10

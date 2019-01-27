@@ -37,7 +37,7 @@ namespace Visual
             visualNode.ResetStreamVisualizationTargets();
             node.Streams.ForEach(x =>
             {
-                x.Interactions.ForEach(y => visualNode.SetStreamVisualizaionValue(y.Type, y.CurrentFlowRate));
+                //x.Interactions.ForEach(y => visualNode.SetStreamVisualizaionValue(y.Type, y.CurrentFlowRate));
                 x.Transfers.ForEach(y => visualNode.SetStreamVisualizaionValue(y.Type, y.Amount));
             });
 
