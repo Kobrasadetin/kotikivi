@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3243ed0ebe4f95adc2e0aa6bdb6eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dimension: 10
+  Dimension: 25
   NoiseScale: 0.5
   NoiseOffset: 0
   MiddleNode:

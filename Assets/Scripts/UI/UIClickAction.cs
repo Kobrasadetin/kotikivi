@@ -20,6 +20,16 @@ public class UIClickAction : MonoBehaviour
 
     private void applyInertia(float multiplier)
     {
+        var cameraPos = GetCameraPos();
+        var homeDistance = (Global.GlobalVariables.GetHomeNodePosition() - cameraPos).magnitude;
+        var homeDirection = (Global.GlobalVariables.GetHomeNodePosition() - cameraPos).normalized;
+        homeDirection.Scale(new Vector3(1, 0, 1));
+
+        if (homeDistance > 5)
+        {
+            CameraInertia += homeDirection * homeDistance * 0.005f;
+        }
+
         Camera.main.transform.Translate(CameraInertia, Space.World);
         CameraInertia = CameraInertia.magnitude < 0.01 ? Vector3.zero : CameraInertia * multiplier;
     }

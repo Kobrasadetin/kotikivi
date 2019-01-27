@@ -22,6 +22,10 @@ namespace Visual
         {
             evaluator = new BasicPrefabEvaluator(visualizationLibrary);
             graph = Graph.GraphSingleton.Instance.Graph;
+
+            Vector2 homePos = evaluator.calculatePosition(graph.HomeNode.Coordinate);
+            Global.GlobalVariables.SetHomeNodePosition(new Vector3(homePos.x, 0, homePos.y));
+
             graph.Nodes.ForEach(node =>
                {
                    VisualInstanceFactory.CreateTile(this.transform, node, evaluator);
