@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UIClickAction : MonoBehaviour
 {
-    public float dragSpeed = 2;
+    public float dragSpeed = 20;
+    public float speedLimit = 0.19f;
     public static Vector3 CameraInertia = Vector3.zero;
     private Vector3 dragOrigin;
     bool cameraDragActive = false;
@@ -20,6 +21,25 @@ public class UIClickAction : MonoBehaviour
 
     private void applyInertia(float multiplier)
     {
+        if (CameraInertia.magnitude> speedLimit)
+        {
+            CameraInertia *= speedLimit / CameraInertia.magnitude;
+        }
+        var cameraPos = GetCameraPos();
+        var homeDistance = (Global.GlobalVariables.GetHomeNodePosition() - cameraPos).magnitude;
+        var homeDirection = (Global.GlobalVariables.GetHomeNodePosition() - cameraPos).normalized;
+        homeDirection.Scale(new Vector3(1, 0, 1));
+
+        if (homeDistance > Global.GlobalVariables.GetHomeNodePosition().x - 5f)
+        {
+            CameraInertia += homeDirection * homeDistance * 0.005f;
+        }
+        if (homeDistance > Global.GlobalVariables.GetHomeNodePosition().x - 3f)
+        {
+            CameraInertia += homeDirection * homeDistance * 0.035f;
+            cameraPos += homeDirection * 0.05f;
+        }
+
         Camera.main.transform.Translate(CameraInertia, Space.World);
         CameraInertia = CameraInertia.magnitude < 0.01 ? Vector3.zero : CameraInertia * multiplier;
     }
@@ -44,7 +64,7 @@ public class UIClickAction : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            applyInertia(0.4f);
+            
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //dragging an object
             if (dynamicObjectInHand != null)
@@ -93,7 +113,8 @@ public class UIClickAction : MonoBehaviour
                 Vector3 move = new Vector3(-pos.x * dragSpeed, 0, -pos.y * dragSpeed);
                 CameraInertia = (CameraInertia + move) / 2;
 
-                Camera.main.transform.Translate(move, Space.World);
+                Camera.main.transform.Translate((move + CameraInertia)/2, Space.World);
+                dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
             }
 
         }
