@@ -46,5 +46,18 @@ namespace Visual
             return newVisual;
 
         }
+
+        public static PlayerCharacter CreatePlayerCharacter(Transform parentTransform, Vector3 position)
+        {
+            Graph.Graph graph = Graph.GraphSingleton.Instance.Graph;
+            PlayerCharacter pc = new PlayerCharacter(position, graph);
+            GameObject newGO = Object.Instantiate<GameObject>(pc.prefab, Vector3.zero, Quaternion.identity);
+            newGO.transform.SetParent(parentTransform);
+
+            VisualDynamicObject newVisual = newGO.AddComponent<VisualCat>();
+            newVisual.Initialize(pc);
+            AI.PlayerAI ai = new AI.PlayerAI(pc);
+            return null;
+        }
     }
 }

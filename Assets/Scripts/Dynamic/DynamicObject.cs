@@ -9,12 +9,26 @@ namespace Dynamic
         private Vector2Int graphCoordinates;
         private Vector3 position;
         private bool heldByPlayer;
+        protected Graph.Graph graph;
 
+        public Quaternion Orientation = Quaternion.identity;
         public GameObject prefab;
+
+        public DynamicObject(Vector3 position, Graph.Graph graph)
+        {
+            this.position = position;
+            this.graph = graph;
+        }
+
 
         public virtual DynamicObject PickUpObject()
         {
             return null;
+        }
+
+        public virtual bool DropObject()
+        {
+            return false;
         }
 
         public bool GetHeldByPlayer()
@@ -25,11 +39,6 @@ namespace Dynamic
         public void SetHeldByPlayer(bool value)
         {
             heldByPlayer = value;
-        }
-
-        public DynamicObject(Vector3 position)
-        {
-            this.position = position;
         }
 
         public Vector2Int GetGraphCoordinates()
@@ -49,7 +58,13 @@ namespace Dynamic
 
         public void SetPosition(Vector3 value)
         {
+
             position = value;
+        }
+
+        public virtual void DynamicUpdate()
+        {
+
         }
 
     }

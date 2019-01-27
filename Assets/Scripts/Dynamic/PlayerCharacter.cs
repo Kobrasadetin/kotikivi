@@ -6,21 +6,25 @@ namespace Dynamic
 {
     public class PlayerCharacter : DynamicObject
     {
-        public PlayerCharacter(Vector3 position) : base(position)
-        {
+        public float RunSpeed = 0.035f;
+
+        public PlayerCharacter(Vector3 position, Graph.Graph graph) : base(position, graph)
+        { 
             this.prefab = UnityEngine.Resources.Load<GameObject>("Cat/Player");
         }
 
-        // Start is called before the first frame update
-        void Start()
+        public void DynamicUpdate()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            AI.PlayerAI ai = AI.PlayerAI.Instance;
+            if (ai.GetAction() == AI.PlayerAI.Action.RUN)
+            {
+                Quaternion targetOrient = Quaternion.LookRotation(ai.GetDirection(), Vector3.up);
+                //todo: hills
+                Orientation = Quaternion.Lerp(Orientation, targetOrient, 0.5f);
+                Vector3 newPosition = this.GetPosition() + Orientation * Vector3.forward * RunSpeed;
+                this.SetPosition(newPosition);
+            }
+           
         }
     }
 }

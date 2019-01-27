@@ -5,8 +5,8 @@ using Dynamic;
 
 public class VisualDynamicObject : MonoBehaviour
 {
-    private DynamicObject dynamicObject;
-    private Vector3 visualPosition = Vector3.zero;
+    protected DynamicObject dynamicObject;
+    protected Vector3 visualPosition = Vector3.zero;
 
     public DynamicObject GetDynamicObject() {
         return dynamicObject;
@@ -18,7 +18,7 @@ public class VisualDynamicObject : MonoBehaviour
         this.visualPosition = calculateCoordinates(dynamicObject.GetPosition());
     }
 
-    private Vector3 calculateCoordinates(Vector3 worldPos)
+    protected Vector3 calculateCoordinates(Vector3 worldPos)
     {
         return new Vector3(worldPos.x, worldPos.y * 3, worldPos.z);
     }
