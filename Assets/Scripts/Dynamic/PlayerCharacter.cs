@@ -52,7 +52,7 @@ namespace Dynamic
                     else
                     {
                         float linearHeight = Mathf.Lerp(jstart, jend, jumpLerp);
-                        float pHeight = linearHeight + (0.5f - Mathf.Abs(jumpLerp - 0.5f))/0.4f;
+                        float pHeight = linearHeight + (0.5f - Mathf.Abs(jumpLerp - 0.5f))*0.4f;
                         Vector3 pos = GetPosition();
                         SetPosition(new Vector3(pos.x, pHeight, pos.z));
                     }
