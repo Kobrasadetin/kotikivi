@@ -3,23 +3,20 @@ guid: 5e258005ecee9534da706c7d624e3ce1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: natureKit-stone
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: stone_large6
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: natureKit-stone
-    second: {fileID: 2100000, guid: 3da2ba85eb007e340880242e844b4f3a, type: 2}
+    100000: node_id4
+    100002: //RootNode
+    400000: node_id4
+    400002: //RootNode
+    2100000: Material_67
+    2300000: node_id4
+    3300000: node_id4
+    4300000: node_id4
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
