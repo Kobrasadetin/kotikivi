@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44761717, g: 0.49318552, b: 0.5517026, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -163,7 +163,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 67.9
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417489886}
   m_LocalRotation: {x: 0.4361765, y: -0, z: -0, w: 0.8998612}
-  m_LocalPosition: {x: 6.33, y: 3.56, z: 2.59}
+  m_LocalPosition: {x: 0, y: 7.33, z: -7.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -202,12 +202,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417489886}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb6cdde522b902a4bb9128d4f02cacb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragSpeed: 0.2
+  dragSpeed: 2
   inertia: {x: 0, y: 0, z: 0}
 --- !u!1 &1079284241
 GameObject:
@@ -271,13 +271,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079284241}
-  m_LocalRotation: {x: 0.29601985, y: -0.62209314, z: -0.10334611, w: 0.71742034}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 17.227001, y: -86.955, z: -32.742}
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1482237832
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +291,6 @@ GameObject:
   - component: {fileID: 1482237836}
   - component: {fileID: 1482237835}
   - component: {fileID: 1482237837}
-  - component: {fileID: 1482237838}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -339,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac0438d75304b1d8a93e78fef8d7138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TickRate: 0.5
+  TickRate: 1
   CurrentTick: 0
 --- !u!114 &1482237836
 MonoBehaviour:
@@ -377,20 +376,3 @@ MonoBehaviour:
   GraphSingleton: {fileID: 1482237836}
   InteractionLibrary: {fileID: 11400000, guid: 20735924490994edca9d86f94eff6896, type: 2}
   GenerateDebugNodes: 0
---- !u!114 &1482237838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482237832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90d9488bf4434b40b267fdb3b036407e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Library: {fileID: 11400000, guid: 20735924490994edca9d86f94eff6896, type: 2}
-  Types: 0100000002000000
-  Angle: 0
-  Power: 0.5
-  Gradient: 0.05
