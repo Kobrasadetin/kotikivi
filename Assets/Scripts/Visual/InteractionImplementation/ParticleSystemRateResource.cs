@@ -16,7 +16,7 @@ namespace Visual.InteractionImplementations
         {
             Particles.gameObject.SetActive(Value > 0.01f);
             var emission = Particles.emission;
-            emission.rate = new ParticleSystem.MinMaxCurve(0.0f, InitialRate * Value);
+            emission.rateOverTime = new ParticleSystem.MinMaxCurve(0.0f, InitialRate * Value);
         }
     }
 }
