@@ -14,9 +14,12 @@ namespace Graph
     {
         public float Height = 0;
         public Vector2Int Coordinate = Vector2Int.zero;
+        [NonSerialized]
         public List<GraphNode> Neighbors = new List<GraphNode>();
         public List<Resource> Resources = new List<Resource>();
+        [NonSerialized]
         public List<ResourceInteraction> Interactions = new List<ResourceInteraction>();
+        [NonSerialized]
         public List<ResourceStream> Streams = new List<ResourceStream>();
 
         public void InitRandomResources()
