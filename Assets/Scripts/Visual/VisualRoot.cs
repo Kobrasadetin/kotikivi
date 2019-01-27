@@ -11,6 +11,7 @@ namespace Visual
 
         private Graph.Graph graph;
         private BasicPrefabEvaluator evaluator;
+        private AI.PlayerAI ai;
 
         // Start is called before the first frame update
         void Start()
@@ -19,9 +20,20 @@ namespace Visual
             graph = Graph.GraphSingleton.Instance.Graph;
             graph.Nodes.ForEach(node =>
                {
-                   VisualNodeFactory.CreateTile(this.transform, node, evaluator);
+                   VisualInstanceFactory.CreateTile(this.transform, node, evaluator);
                }
             );
+          
+            var ohMyGodHomeIsTheThemeHomeNode = graph.HomeNode;
+            var homeposition = evaluator.calculatePositionWithHeight(ohMyGodHomeIsTheThemeHomeNode);
+            Dynamic.PowerRune rune = new Dynamic.PowerRune(
+                homeposition + new Vector3(.5f, 0f, 0f), 
+                Graph.GraphSingleton.Instance.Graph);
+            VisualInstanceFactory.CreateDynamicObject(this.transform, rune);
+
+            VisualInstanceFactory.CreatePlayerCharacter(this.transform, homeposition);
+
+            transform.gameObject.AddComponent<UIClickAction>();           
         }
 
         // Update is called once per frame

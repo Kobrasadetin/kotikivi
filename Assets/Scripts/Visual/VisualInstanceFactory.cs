@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using Dynamic;
+using System.Collections;
 using System.Collections.Generic;
 using Interactions;
 using UnityEngine;
 
 namespace Visual
 {
-    public class VisualNodeFactory
+    public class VisualInstanceFactory
     {
         private static GameObject[] prefabResource = new GameObject[]
         {
@@ -33,6 +34,30 @@ namespace Visual
             VisualNode visualNode = newGO.GetComponent<VisualNode>();
             visualNode.Initialize(node, evaluator);
             return visualNode;
+        }
+
+        public static VisualDynamicObject CreateDynamicObject(Transform parentTransform, DynamicObject dynamicObject)
+        {
+            GameObject newGO = Object.Instantiate<GameObject>(dynamicObject.prefab, Vector3.zero, Quaternion.identity);
+            newGO.transform.SetParent(parentTransform);
+
+            VisualDynamicObject newVisual = newGO.AddComponent<VisualDynamicObject>();
+            newVisual.Initialize(dynamicObject);
+            return newVisual;
+
+        }
+
+        public static PlayerCharacter CreatePlayerCharacter(Transform parentTransform, Vector3 position)
+        {
+            Graph.Graph graph = Graph.GraphSingleton.Instance.Graph;
+            PlayerCharacter pc = new PlayerCharacter(position, graph);
+            GameObject newGO = Object.Instantiate<GameObject>(pc.prefab, Vector3.zero, Quaternion.identity);
+            newGO.transform.SetParent(parentTransform);
+
+            VisualDynamicObject newVisual = newGO.AddComponent<VisualCat>();
+            newVisual.Initialize(pc);
+            AI.PlayerAI ai = new AI.PlayerAI(pc);
+            return null;
         }
     }
 }
