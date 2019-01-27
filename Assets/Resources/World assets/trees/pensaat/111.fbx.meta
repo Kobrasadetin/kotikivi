@@ -15,7 +15,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: natureKit-leaves
-    second: {fileID: 2100000, guid: 1884775c20b95294e9c021c6ce70adbd, type: 2}
+    second: {fileID: 2100000, guid: 9e4f2256e82d030478b10fa2384af806, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
