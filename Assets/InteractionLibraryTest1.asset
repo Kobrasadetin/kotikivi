@@ -22,7 +22,7 @@ MonoBehaviour:
     - Type: 2
       Amount: 0.025
     - Type: 1
-      Amount: 0.05
+      Amount: 0.025
     Sources:
     - Type: 4
       Amount: 0.05
@@ -36,7 +36,7 @@ MonoBehaviour:
     - Type: 3
       Amount: 0.4
     - Type: 1
-      Amount: 0.1
+      Amount: 0.05
     - Type: 2
       Amount: 0.05
     Sources:
@@ -76,7 +76,7 @@ MonoBehaviour:
     Type: 4
     Sinks:
     - Type: 1
-      Amount: 0.1
+      Amount: 0.05
     - Type: 2
       Amount: 0.05
     - Type: 3
@@ -96,7 +96,7 @@ MonoBehaviour:
     - Type: 2
       Amount: 0.05
     - Type: 1
-      Amount: 0.1
+      Amount: 0.05
     - Type: 3
       Amount: 0.2
     Sources:
@@ -112,7 +112,7 @@ MonoBehaviour:
     Type: 10
     Sinks:
     - Type: 1
-      Amount: 0.15
+      Amount: 0.075
     - Type: 2
       Amount: 0.1
     - Type: 3
@@ -130,7 +130,7 @@ MonoBehaviour:
     Type: 8
     Sinks:
     - Type: 1
-      Amount: 0.2
+      Amount: 0.1
     - Type: 2
       Amount: 0.1
     - Type: 3
@@ -146,7 +146,7 @@ MonoBehaviour:
     Type: 1
     Sinks:
     - Type: 1
-      Amount: 0.1
+      Amount: 0.05
     - Type: 4
       Amount: 0.05
     Sources:
@@ -165,20 +165,20 @@ MonoBehaviour:
       Amount: 0.05
     Sources:
     - Type: 1
-      Amount: 0.3
+      Amount: 0.4
     Spawns: []
   - Id: Fire
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 2
     Sinks:
     - Type: 1
-      Amount: 0.05
+      Amount: 0.3
     - Type: 4
-      Amount: 0.2
+      Amount: 0.4
     - Type: 5
-      Amount: 0.2
+      Amount: 0.4
     - Type: 7
-      Amount: 0.2
+      Amount: 0.4
     Sources:
     - Type: 0
       Amount: 0.5
