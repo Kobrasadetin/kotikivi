@@ -12,7 +12,17 @@ ModelImporter:
     4300000: Cylinder_001
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: 761254901325a3f4eb590e483ce93c96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red
+    second: {fileID: 2100000, guid: e9f0aad3a90ed7e438db244a4f03d85f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -64,7 +74,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.06
+    previousCalculatedGlobalScale: 0.08
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

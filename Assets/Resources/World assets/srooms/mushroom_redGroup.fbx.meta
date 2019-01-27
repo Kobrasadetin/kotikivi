@@ -20,7 +20,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: natureKit-mushroom
-    second: {fileID: 2100000, guid: 06a9d0ae0010e684397a32f385d51e5b, type: 2}
+    second: {fileID: 2100000, guid: e9f0aad3a90ed7e438db244a4f03d85f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
