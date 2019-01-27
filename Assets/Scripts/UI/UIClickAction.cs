@@ -9,13 +9,16 @@ public class UIClickAction : MonoBehaviour
     public static Vector3 CameraInertia = Vector3.zero;
     private Vector3 dragOrigin;
     bool cameraDragActive = false;
+    public Quaternion RotInertia = Quaternion.identity;
+    public Vector2 InputMousePositionOld;
+    public bool rotationActive = false;
 
 
     PrefabChangeEvaluator prefabCE = new Visual.BasicPrefabEvaluator(null);
     // Start is called before the first frame update
     void Start()
     {
-        
+        Camera.main.transform.Translate(Global.GlobalVariables.GetHomeNodePosition(), Space.World);
     }
     Dynamic.DynamicObject dynamicObjectInHand;
 
@@ -109,20 +112,51 @@ public class UIClickAction : MonoBehaviour
                     return;
                 }
 
+                //add turning
+                if (Input.mousePosition.y > Screen.height / 2)
+                {
+                    if (rotationActive)
+                    {
+                        float multi = Input.mousePosition.y / Screen.height * 0.08f;
+                        float diff = Input.mousePosition.x - InputMousePositionOld.x;
+                        Quaternion rot = Quaternion.Euler(0f, diff * multi, 0f);
+                        RotInertia = RotInertia * rot;
+                    }
+                    else
+                    {
+                        rotationActive = true;                       
+                    }
+                    InputMousePositionOld.x = Input.mousePosition.x;
+
+                }
+                else
+                {
+                    rotationActive = false;
+                }
+
                 Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition) - dragOrigin;
                 Vector3 move = new Vector3(-pos.x * dragSpeed, 0, -pos.y * dragSpeed);
+                move = Camera.main.transform.rotation * move;
+                move.Scale(new Vector3(1, 0, 1));
                 CameraInertia = (CameraInertia + move) / 2;
 
                 Camera.main.transform.Translate((move + CameraInertia)/2, Space.World);
                 dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+                RotInertia = Quaternion.Lerp(RotInertia, Quaternion.identity, 0.3f);
+                Camera.main.transform.Rotate(RotInertia.eulerAngles, Space.World);
             }
 
         }
         else
         {
             //mb0 not pressed
+            rotationActive = false;
             cameraDragActive = false;
             applyInertia(0.9f);
+            RotInertia = Quaternion.Lerp(RotInertia, Quaternion.identity, 0.3f);
+            Camera.main.transform.Rotate(RotInertia.eulerAngles, Space.World);
+
             if (dynamicObjectInHand != null)
             {
                 dynamicObjectInHand.DropObject();

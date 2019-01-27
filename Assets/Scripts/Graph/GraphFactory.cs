@@ -123,6 +123,8 @@ namespace Graph
             });
 
             midNode = result.Nodes[midNodeIndex];
+            midNode.Height = 0.55f;
+            midNode.Neighbors.ForEach(x => x.Height = 0.55f);
             result.HomeNode = midNode;
             return result;
         }
