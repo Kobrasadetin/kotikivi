@@ -29,7 +29,12 @@ namespace Interactions
 
         public LibraryEntry GetRandomInteraction(out List<LibraryEntry> dependencies)
         {
-            var randomInteraction = Entries[Mathf.FloorToInt(Random.Range(0.001f, Entries.Count - 0.001f))];
+            LibraryEntry randomInteraction = Entries[Mathf.FloorToInt(Random.Range(0.001f, Entries.Count - 0.001f))];
+            int i = 0;
+            while (randomInteraction.Id == "Fire" && ++i < 5)
+            {
+                randomInteraction = Entries[Mathf.FloorToInt(Random.Range(0.001f, Entries.Count - 0.001f))];
+            }
             dependencies = GetDependencies(randomInteraction.Id);
             return randomInteraction;
         }
