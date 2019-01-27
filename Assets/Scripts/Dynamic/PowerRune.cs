@@ -8,7 +8,7 @@ namespace Dynamic
     {
         public PowerRune(Vector3 position, Graph.Graph graph) :base(position, graph)
         {
-            this.prefab = UnityEngine.Resources.Load<GameObject>("Stone");
+            this.prefab = UnityEngine.Resources.Load<GameObject>("RuneStone_1");
         }
 
         override public DynamicObject PickUpObject()

@@ -16,7 +16,7 @@ namespace Visual
             UnityEngine.Resources.Load<GameObject>("GroundNode 1"),
         };
 
-        private static GameObject homeResource = UnityEngine.Resources.Load<GameObject>("GroundNode");
+        private static GameObject homeResource = UnityEngine.Resources.Load<GameObject>("GroundNode Home");
         public static VisualNode CreateTile(Transform parentTransform, Graph.GraphNode node, BasicPrefabEvaluator evaluator)
         {
             GameObject newGO;
