@@ -32,6 +32,15 @@ namespace Graph
             Interactions.ForEach(x => x.Consume(Resources));
             Interactions.ForEach(x => x.Spawn(Neighbors));
             Interactions.ForEach(x => x.Tick());
+            AddLight();
+        }
+
+        private void AddLight()
+        {
+            if (Resources.Exists(x => x.Type == ResourceType.LIGTH))
+            {
+                Resources.First(x => x.Type == ResourceType.LIGTH).Source(0.2f);
+            }
         }
 
         public GraphNode GetNeighborInDirection(StreamAngle direction)

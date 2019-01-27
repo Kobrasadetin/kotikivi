@@ -36,6 +36,8 @@ namespace Visual.InteractionImplementations
                     Value = Value - d;
                 }
             }
+
+            Value = Mathf.Clamp(Value, 0f, 1f);
         }
 
         public virtual void SetValue()
