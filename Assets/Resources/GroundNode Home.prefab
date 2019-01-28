@@ -82,9 +82,8 @@ MonoBehaviour:
   node:
     Height: 0
     Coordinate: {x: 0, y: 0}
-    Neighbors: []
     Resources: []
-    Interactions: []
+    SeepRate: 0.1
   groundMesh: {fileID: 0}
   visualInteractions:
   - {fileID: 4228010261700732274}
@@ -104,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e09b05b99a3435ebca28364f98b5d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Power: 0.5
+  Power: 0.6
   Gradient: 0.1
   InteractionLibrary: {fileID: 11400000, guid: 20735924490994edca9d86f94eff6896, type: 2}
 --- !u!1 &1206974140881647872

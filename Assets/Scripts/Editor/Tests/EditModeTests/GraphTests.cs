@@ -14,7 +14,7 @@ namespace Tests
         public void GraphCreationAndNeighbors()
         {
             GraphNode middleNode;
-            Graph.Graph graph = GraphFactory.CreateGraph(5, 0, 0, out middleNode);
+            Graph.Graph graph = GraphFactory.CreateGraph(5, 0, 0, 0, false, out middleNode);
             graph.Nodes.ForEach(node =>
             {
                 foreach (PowerLines.StreamAngle angle in (PowerLines.StreamAngle[])PowerLines.StreamAngle.GetValues(typeof(PowerLines.StreamAngle)))

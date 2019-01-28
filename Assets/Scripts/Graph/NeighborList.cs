@@ -37,6 +37,22 @@ namespace Graph {
             throw new KeyNotFoundException();
         }
 
+        public int Count
+        {
+            get
+            {
+                int count = 0;
+                foreach (T obj in neighbors)
+                {
+                    if (obj != null)
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+        }
+
         public bool Exists(System.Predicate<T> predicate)
         {
             foreach (T obj in neighbors)

@@ -9,6 +9,8 @@ namespace Graph
         public int Dimension;
         public float NoiseScale;
         public float NoiseOffset;
+        public float ResourceSeepRate = 0.1f;
+        public bool RandomResources = true;
         public Graph Graph;
         public GraphNode MiddleNode;
 
@@ -19,7 +21,7 @@ namespace Graph
 
         private void Start()
         {
-            Graph = GraphFactory.CreateGraph(Dimension, NoiseScale, NoiseOffset, out MiddleNode);
+            Graph = GraphFactory.CreateGraph(Dimension, NoiseScale, NoiseOffset, ResourceSeepRate, RandomResources, out MiddleNode);
         }
     }
 }
