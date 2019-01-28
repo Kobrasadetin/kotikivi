@@ -25,13 +25,44 @@ namespace Graph {
             return neighbors[(int)angle];
         }
 
+        public StreamAngle GetNeighborDirection(T neighborObject)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                if (neighbors[i] != null && neighbors[i].Equals(neighborObject))
+                {
+                    return (StreamAngle)i;
+                }
+            }
+            throw new KeyNotFoundException();
+        }
+
         public bool Exists(System.Predicate<T> predicate)
         {
-            return this.ToList().Exists(predicate);
+            foreach (T obj in neighbors)
+            {
+                if (obj != null && predicate.Invoke(obj))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
+
         public void ForEach(System.Action<T> action)
         {
-            this.ToList().ForEach(action);
+            foreach (T obj in neighbors)
+            {
+                if (obj != null)
+                {
+                    action.Invoke(obj);
+                }
+            }
+        }
+
+        private int getIndex(T neighbor)
+        {
+            return System.Array.IndexOf(neighbors, neighbor);
         }
 
 

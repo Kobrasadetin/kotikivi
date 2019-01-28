@@ -117,6 +117,7 @@ namespace Graph
                 }
             }         
         }
+
         public void SetAccessibleNeighbor(StreamAngle direction)
         {
             GraphNode neighbor = Neighbors.GetNeigbor(direction);

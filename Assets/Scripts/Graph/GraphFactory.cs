@@ -13,6 +13,7 @@ namespace Graph
          * Create rectangular graph that represents hexagon grid rendered in 1/2 square offset on each alternating row
          * Height from perlin noise
          */
+        public static float MAX_SLOPE_DIFFERENCE = 0.1f;
         public static Graph CreateGraph(int dimension, float noiseScale, float noiseOffset, out GraphNode midNode)
         {
             Graph result = new Graph();
@@ -109,6 +110,21 @@ namespace Graph
                     }
                 }
             }
+
+            // Set neighboring nodes accessible where the height difference is small
+            result.Nodes.ForEach(node =>
+                {
+                    node.Neighbors.ForEach(neighbor =>
+                    {
+                        float heighDifference = Mathf.Abs(node.Height - neighbor.Height);
+                        if (heighDifference <= MAX_SLOPE_DIFFERENCE)
+                        {
+                            node.SetAccessibleNeighbor(node.Neighbors.GetNeighborDirection(neighbor));
+                            neighbor.SetAccessibleNeighbor(neighbor.Neighbors.GetNeighborDirection(node));
+                        }
+                    });
+                }
+            );
 
             // Infinite resource hex is in the middle
 
