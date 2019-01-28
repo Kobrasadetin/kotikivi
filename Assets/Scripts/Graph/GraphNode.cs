@@ -60,6 +60,7 @@ namespace Graph
             return Neighbors.GetNeigbor(direction);
         }
 
+        [Obsolete("Deprecated")]
         public GraphNode GetNeighborInDirectionDeprecated(StreamAngle direction)
         {
             if (Coordinate.y % 2 == 0)
