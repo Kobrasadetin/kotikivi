@@ -22,6 +22,8 @@ namespace Graph
         [NonSerialized]
         public List<ResourceStream> Streams = new List<ResourceStream>();
 
+        public float SeepRate = 0.1f;
+
         public void InitRandomResources()
         {
             for (int i=0; i<Enum.GetValues(typeof(ResourceType)).Length; i++)
@@ -35,22 +37,22 @@ namespace Graph
             Interactions.ForEach(x => x.Consume(Resources));
             Interactions.ForEach(x => x.Spawn(Neighbors));
             Interactions.ForEach(x => x.Tick());
-            AddLight();
+
+            SeepResourcesToNeighbors();
+
+            AddResource(ResourceType.LIGTH, 0.2f); // sunlight
+            AddResource(ResourceType.WATER, 0.05f); // groundwater
         }
 
-        private void AddLight()
+        public void AddResource(ResourceType type, float amount)
         {
-            if (Resources.Exists(x => x.Type == ResourceType.LIGTH))
+            if (Resources.Exists(x => x.Type == type))
             {
-                Resources.First(x => x.Type == ResourceType.LIGTH).Source(0.2f);
+                Resources.First(x => x.Type == type).Source(amount);
             }
-        }
-
-        private void AddGroundWater()
-        {
-            if (Resources.Exists(x => x.Type == ResourceType.WATER))
+            else
             {
-                Resources.First(x => x.Type == ResourceType.WATER).Source(0.1f);
+                Resources.Add(new Resource() { Type = type, Amount = amount});
             }
         }
 
@@ -112,6 +114,19 @@ namespace Graph
             }
 
             return null;
+        }
+
+        public void SeepResourcesToNeighbors()
+        {
+            List<Resource> seep = new List<Resource>();
+            Resources.ForEach(x =>
+            {
+                float amount = x.Amount * SeepRate;
+                seep.Add(new Resource() { Type =  x.Type, Amount = amount});
+                x.Sink(amount);
+            });
+
+            Neighbors.ForEach(n =>seep.ForEach(s => n.AddResource(s.Type, s.Amount / Neighbors.Count)));
         }
     }
 }

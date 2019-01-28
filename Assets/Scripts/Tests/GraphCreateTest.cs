@@ -9,7 +9,7 @@ namespace Tests
         void Start()
         {
             GraphNode midNode;
-            var graph = GraphFactory.CreateGraph(5, 0.368f, 13f, out midNode);
+            var graph = GraphFactory.CreateGraph(5, 0.368f, 13f, 0f, false, out midNode);
 
             Debug.Assert(graph.Nodes.Count == 5 * 5);
             Debug.Assert(midNode != null);
