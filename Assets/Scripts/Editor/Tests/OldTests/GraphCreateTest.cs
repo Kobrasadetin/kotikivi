@@ -1,8 +1,9 @@
 using System.Linq;
 using Graph;
 using UnityEngine;
+using System.Collections;
 
-namespace Tests
+namespace OldTests
 {
     public class GraphCreateTest : MonoBehaviour
     {
@@ -13,8 +14,8 @@ namespace Tests
 
             Debug.Assert(graph.Nodes.Count == 5 * 5);
             Debug.Assert(midNode != null);
-            Debug.Assert(graph.Nodes[0].Neighbors.Count == 2);
-            Debug.Assert(midNode.Neighbors.Count == 6);
+            Debug.Assert(graph.Nodes[0].Neighbors.ToList().Count == 2);
+            Debug.Assert(midNode.Neighbors.ToList().Count == 6);
 
             Debug.Log("Graph create test completed");
         }

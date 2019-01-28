@@ -5,7 +5,7 @@ using PowerLines;
 using Resources;
 using UnityEngine;
 
-namespace Tests
+namespace OldTests
 {
     public class PowerStreamTest : MonoBehaviour
     {

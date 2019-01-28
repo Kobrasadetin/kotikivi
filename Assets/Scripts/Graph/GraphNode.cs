@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Interactions;
@@ -14,13 +13,15 @@ namespace Graph
     {
         public float Height = 0;
         public Vector2Int Coordinate = Vector2Int.zero;
-        [NonSerialized]
-        public List<GraphNode> Neighbors = new List<GraphNode>();
         public List<Resource> Resources = new List<Resource>();
+        [NonSerialized]
+        public NeighborList<GraphNode> Neighbors = new NeighborList<GraphNode>();
+        [NonSerialized]
+        private NeighborList<GraphNode> AccessibleNeighbors = new NeighborList<GraphNode>();
         [NonSerialized]
         public List<ResourceInteraction> Interactions = new List<ResourceInteraction>();
         [NonSerialized]
-        public List<ResourceStream> Streams = new List<ResourceStream>();
+        public List<ResourceStream> Streams = new List<ResourceStream>();     
 
         public void InitRandomResources()
         {
@@ -33,7 +34,7 @@ namespace Graph
         public void Tick()
         {
             Interactions.ForEach(x => x.Consume(Resources));
-            Interactions.ForEach(x => x.Spawn(Neighbors));
+            Interactions.ForEach(x => x.Spawn(Neighbors.ToList()));
             Interactions.ForEach(x => x.Tick());
             AddLight();
         }
@@ -55,6 +56,11 @@ namespace Graph
         }
 
         public GraphNode GetNeighborInDirection(StreamAngle direction)
+        {
+            return Neighbors.GetNeigbor(direction);
+        }
+
+        public GraphNode GetNeighborInDirectionDeprecated(StreamAngle direction)
         {
             if (Coordinate.y % 2 == 0)
             {
@@ -109,9 +115,18 @@ namespace Graph
                     default:
                         throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
                 }
+            }         
+        }
+        public void SetAccessibleNeighbor(StreamAngle direction)
+        {
+            GraphNode neighbor = Neighbors.GetNeigbor(direction);
+            if (neighbor!=null)
+            {
+                AccessibleNeighbors.SetNeighbor(direction, neighbor);
+            }else
+            {
+                throw new UnassignedReferenceException("no neighbor at " + direction.ToString() + " for node " + this.ToString());
             }
-
-            return null;
         }
     }
 }

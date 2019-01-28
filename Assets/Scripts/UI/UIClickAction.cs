@@ -180,8 +180,7 @@ namespace UI
             move += Camera.main.transform.rotation * Vector3.forward * Input.GetAxis("Vertical") * KEYS_MOVE_AXIS_SPEED_VERTICAL;
             move -= Camera.main.transform.rotation * Vector3.left * Input.GetAxis("Horizontal") * KEYS_MOVE_AXIS_SPEED_HORIZONTAL;
             move.Scale(new Vector3(1, 0, 1));
-            CameraInertia = (CameraInertia + move);
-            Debug.Log(move);
+            CameraInertia = (CameraInertia + move);           
         }
     }
 }
