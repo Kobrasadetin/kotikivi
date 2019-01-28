@@ -3,7 +3,7 @@ using Graph;
 using Interactions;
 using UnityEngine;
 
-namespace Tests
+namespace OldTests
 {
     public class GraphDebug : MonoBehaviour
     {

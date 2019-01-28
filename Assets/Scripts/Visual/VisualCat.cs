@@ -17,7 +17,7 @@ public class VisualCat : VisualDynamicObject
 
         if (ai != null)
         {
-            Vector3 v =UIClickAction.GetCameraPos();
+            Vector3 v = UI.UIClickAction.GetCameraPos();
             ai.SetTarget(v);
             ai.Update();
            

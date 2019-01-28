@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Resources;
+using UnityEngine;
 
 namespace Graph
 {
@@ -10,6 +11,7 @@ namespace Graph
     {
         public GraphNode HomeNode;
         public List<GraphNode> Nodes = new List<GraphNode>();
+        public Dictionary<Vector2Int, GraphNode> NodeAtCoordinates = new Dictionary<Vector2Int, GraphNode>();
         public List<ResourceStream> Streams = new List<ResourceStream>();
 
         public void Tick()
