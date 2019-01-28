@@ -6,6 +6,7 @@ namespace Visual.InteractionImplementations
     {
         public Transform[] Transforms;
         private Vector3[] MaxScale;
+        private bool activeObject = true;
 
         public void Start()
         {
@@ -18,10 +19,30 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
-            for (int i=0; i<Transforms.Length; i++)
+            bool shouldActivate = (Value > 0.01f);
+
+            if ((!activeObject) && shouldActivate)
             {
-                Transforms[i].gameObject.SetActive(Value > 0.01f);
-                Transforms[i].localScale = MaxScale[i] * Value;
+                activeObject = true;
+                for (int i = 0; i < Transforms.Length; i++)
+                {
+                    Transforms[i].gameObject.SetActive(true);
+                }
+            }
+            if (activeObject && (!shouldActivate))
+            {
+                activeObject = false;
+                for (int i = 0; i < Transforms.Length; i++)
+                {
+                    Transforms[i].gameObject.SetActive(false);
+                }
+            }
+            if (activeObject)
+            {
+                for (int i = 0; i < Transforms.Length; i++)
+                {
+                    Transforms[i].localScale = MaxScale[i] * Value;
+                }
             }
         }
     }
