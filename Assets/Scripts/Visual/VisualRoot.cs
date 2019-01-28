@@ -42,7 +42,7 @@ namespace Visual
 
             VisualInstanceFactory.CreatePlayerCharacter(this.transform, homeposition);
 
-            transform.gameObject.AddComponent<UIClickAction>();
+            transform.gameObject.AddComponent<UI.UIClickAction>();
         }
 
         private void CreatePowerRune(Vector3 homeposition, Vector3 offset, PowerRuneType type)

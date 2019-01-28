@@ -2,169 +2,186 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIClickAction : MonoBehaviour
+namespace UI
 {
-    public float dragSpeed = 20;
-    public float speedLimit = 0.19f;
-    public static Vector3 CameraInertia = Vector3.zero;
-    private Vector3 dragOrigin;
-    bool cameraDragActive = false;
-    public Quaternion RotInertia = Quaternion.identity;
-    public Vector2 InputMousePositionOld;
-    public bool rotationActive = false;
 
-
-    PrefabChangeEvaluator prefabCE = new Visual.BasicPrefabEvaluator(null);
-    // Start is called before the first frame update
-    void Start()
+    public class UIClickAction : MonoBehaviour
     {
-        Camera.main.transform.Translate(Global.GlobalVariables.GetHomeNodePosition(), Space.World);
-    }
-    Dynamic.DynamicObject dynamicObjectInHand;
+        public static float KEYS_MOVE_AXIS_SPEED_VERTICAL = 1f;
+        public static float KEYS_MOVE_AXIS_SPEED_HORIZONTAL = .6f;
+        public float dragSpeed = 20;
+        public float speedLimit = 0.19f;
+        public static Vector3 CameraInertia = Vector3.zero;
+        private Vector3 dragOrigin;
+        bool cameraDragActive = false;
+        public Quaternion RotInertia = Quaternion.identity;
+        public Vector2 InputMousePositionOld;
+        public bool rotationActive = false;
 
-    private void applyInertia(float multiplier)
-    {
-        if (CameraInertia.magnitude> speedLimit)
+        PrefabChangeEvaluator prefabCE = new Visual.BasicPrefabEvaluator(null);
+        // Start is called before the first frame update
+        void Start()
         {
-            CameraInertia *= speedLimit / CameraInertia.magnitude;
+            Camera.main.transform.Translate(Global.GlobalVariables.GetHomeNodePosition(), Space.World);
         }
-        var cameraPos = GetCameraPos();
-        var homeDistance = (Global.GlobalVariables.GetHomeNodePosition() - cameraPos).magnitude;
-        var homeDirection = (Global.GlobalVariables.GetHomeNodePosition() - cameraPos).normalized;
-        homeDirection.Scale(new Vector3(1, 0, 1));
+        Dynamic.DynamicObject dynamicObjectInHand;
 
-        if (homeDistance > Global.GlobalVariables.GetHomeNodePosition().x - 5f)
+        private void applyInertia(float multiplier)
         {
-            CameraInertia += homeDirection * homeDistance * 0.005f;
-        }
-        if (homeDistance > Global.GlobalVariables.GetHomeNodePosition().x - 3f)
-        {
-            CameraInertia += homeDirection * homeDistance * 0.035f;
-            cameraPos += homeDirection * 0.05f;
-        }
-
-        Camera.main.transform.Translate(CameraInertia, Space.World);
-        CameraInertia = CameraInertia.magnitude < 0.01 ? Vector3.zero : CameraInertia * multiplier;
-    }
-
-    public static Vector3 GetCameraPos()
-    {
-        //todo: ground mesh hitboxes
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane));
-        Plane m_Plane = new Plane(Vector3.up, new Vector3(0, 2.2f, 0));
-        float enter = 0.0f;
-        if (m_Plane.Raycast(ray, out enter))
-        {
-            //Get the point that is clicked
-            return ray.GetPoint(enter);
-        }
-        Debug.Log("Camera position not found");
-        return Vector3.zero;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //dragging an object
-            if (dynamicObjectInHand != null)
+            if (CameraInertia.magnitude > speedLimit)
             {
-                var VPos = dynamicObjectInHand.GetPosition();
-                Plane m_Plane = new Plane(Vector3.up, new Vector3(VPos.x, VPos.y*3, VPos.z));
-                float enter = 0.0f;
-                if (m_Plane.Raycast(ray, out enter))
-                {
-                    //Get the point that is clicked
-                    Vector3 p = ray.GetPoint(enter);
+                CameraInertia *= speedLimit / CameraInertia.magnitude;
+            }
+            var cameraPos = GetCameraPos();
+            var homeDistance = (Global.GlobalVariables.GetHomeNodePosition() - cameraPos).magnitude;
+            var homeDirection = (Global.GlobalVariables.GetHomeNodePosition() - cameraPos).normalized;
+            homeDirection.Scale(new Vector3(1, 0, 1));
 
-                    //Move dynamicObjectInHand to the point
-                    var oldPos = dynamicObjectInHand.GetPosition();
-                    dynamicObjectInHand.SetPosition(new Vector3(p.x, oldPos.y, p.z));                  
-                }
-                return;
+            if (homeDistance > Global.GlobalVariables.GetHomeNodePosition().x - 5f)
+            {
+                CameraInertia += homeDirection * homeDistance * 0.005f;
+            }
+            if (homeDistance > Global.GlobalVariables.GetHomeNodePosition().x - 3f)
+            {
+                CameraInertia += homeDirection * homeDistance * 0.035f;
+                cameraPos += homeDirection * 0.05f;
             }
 
-            //clicking or dragging
-            RaycastHit hit;
-            if (cameraDragActive == false && Physics.Raycast(ray, out hit))
+            //keypresses affect CameraInertia
+            HandleKeypressActions();
+
+            Camera.main.transform.Translate(CameraInertia, Space.World);
+            CameraInertia = CameraInertia.magnitude < 0.01 ? Vector3.zero : CameraInertia * multiplier;
+        }
+
+        public static Vector3 GetCameraPos()
+        {
+            //todo: ground mesh hitboxes
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane));
+            Plane m_Plane = new Plane(Vector3.up, new Vector3(0, 2.2f, 0));
+            float enter = 0.0f;
+            if (m_Plane.Raycast(ray, out enter))
             {
-                VisualDynamicObject clickedObject = hit.transform.GetComponent<VisualDynamicObject>();
-                if (clickedObject != null)
+                //Get the point that is clicked
+                return ray.GetPoint(enter);
+            }
+            Debug.Log("Camera position not found");
+            return Vector3.zero;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetMouseButton(0))
+            {
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                //dragging an object
+                if (dynamicObjectInHand != null)
                 {
-                    Dynamic.DynamicObject obj = clickedObject.GetDynamicObject().PickUpObject();
-                    if (obj != null)
+                    var VPos = dynamicObjectInHand.GetPosition();
+                    Plane m_Plane = new Plane(Vector3.up, new Vector3(VPos.x, VPos.y * 3, VPos.z));
+                    float enter = 0.0f;
+                    if (m_Plane.Raycast(ray, out enter))
                     {
-                        dynamicObjectInHand = obj;
-                        Debug.Log("Object in hand");
+                        //Get the point that is clicked
+                        Vector3 p = ray.GetPoint(enter);
+
+                        //Move dynamicObjectInHand to the point
+                        var oldPos = dynamicObjectInHand.GetPosition();
+                        dynamicObjectInHand.SetPosition(new Vector3(p.x, oldPos.y, p.z));
                     }
-                }
-            }
-            else
-            {
-                //camera drag
-                if (cameraDragActive == false)
-                {
-                    cameraDragActive = true;
-                    dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
                     return;
                 }
 
-                //add turning
-                if (Input.mousePosition.y > Screen.height / 2)
+                //clicking or dragging
+                RaycastHit hit;
+                if (cameraDragActive == false && Physics.Raycast(ray, out hit))
                 {
-                    if (rotationActive)
+                    VisualDynamicObject clickedObject = hit.transform.GetComponent<VisualDynamicObject>();
+                    if (clickedObject != null)
                     {
-                        float multi = Input.mousePosition.y / Screen.height * 0.08f;
-                        float diff = Input.mousePosition.x - InputMousePositionOld.x;
-                        Quaternion rot = Quaternion.Euler(0f, diff * multi, 0f);
-                        RotInertia = RotInertia * rot;
+                        Dynamic.DynamicObject obj = clickedObject.GetDynamicObject().PickUpObject();
+                        if (obj != null)
+                        {
+                            dynamicObjectInHand = obj;
+                            Debug.Log("Object in hand");
+                        }
                     }
-                    else
-                    {
-                        rotationActive = true;                       
-                    }
-                    InputMousePositionOld.x = Input.mousePosition.x;
-
                 }
                 else
                 {
-                    rotationActive = false;
+                    //camera drag
+                    if (cameraDragActive == false)
+                    {
+                        cameraDragActive = true;
+                        dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                        return;
+                    }
+
+                    //add turning
+                    if (Input.mousePosition.y > Screen.height / 2)
+                    {
+                        if (rotationActive)
+                        {
+                            float multi = Input.mousePosition.y / Screen.height * 0.08f;
+                            float diff = Input.mousePosition.x - InputMousePositionOld.x;
+                            Quaternion rot = Quaternion.Euler(0f, diff * multi, 0f);
+                            RotInertia = RotInertia * rot;
+                        }
+                        else
+                        {
+                            rotationActive = true;
+                        }
+                        InputMousePositionOld.x = Input.mousePosition.x;
+
+                    }
+                    else
+                    {
+                        rotationActive = false;
+                    }
+
+                    Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition) - dragOrigin;
+                    Vector3 move = new Vector3(-pos.x * dragSpeed, 0, -pos.y * dragSpeed);
+                    move = Camera.main.transform.rotation * move;
+                    move.Scale(new Vector3(1, 0, 1));
+                    CameraInertia = (CameraInertia + move) / 2;                 
+
+                    Camera.main.transform.Translate((move + CameraInertia) / 2, Space.World);
+                    dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+                    RotInertia = Quaternion.Lerp(RotInertia, Quaternion.identity, 0.3f);
+                    Camera.main.transform.Rotate(RotInertia.eulerAngles, Space.World);
                 }
 
-                Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition) - dragOrigin;
-                Vector3 move = new Vector3(-pos.x * dragSpeed, 0, -pos.y * dragSpeed);
-                move = Camera.main.transform.rotation * move;
-                move.Scale(new Vector3(1, 0, 1));
-                CameraInertia = (CameraInertia + move) / 2;
-
-                Camera.main.transform.Translate((move + CameraInertia)/2, Space.World);
-                dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
+            }
+            else
+            {
+                //mb0 not pressed
+                rotationActive = false;
+                cameraDragActive = false;
+                applyInertia(0.9f);
                 RotInertia = Quaternion.Lerp(RotInertia, Quaternion.identity, 0.3f);
                 Camera.main.transform.Rotate(RotInertia.eulerAngles, Space.World);
-            }
 
+                if (dynamicObjectInHand != null)
+                {
+                    dynamicObjectInHand.DropObject();
+                    dynamicObjectInHand = null;
+                }
+
+
+
+            }
         }
-        else
+        private void HandleKeypressActions()
         {
-            //mb0 not pressed
-            rotationActive = false;
-            cameraDragActive = false;
-            applyInertia(0.9f);
-            RotInertia = Quaternion.Lerp(RotInertia, Quaternion.identity, 0.3f);
-            Camera.main.transform.Rotate(RotInertia.eulerAngles, Space.World);
-
-            if (dynamicObjectInHand != null)
-            {
-                dynamicObjectInHand.DropObject();
-                dynamicObjectInHand = null;
-            }
-
-
-
+            Vector3 move = Vector3.zero;          
+            move += Camera.main.transform.rotation * Vector3.forward * Input.GetAxis("Vertical") * KEYS_MOVE_AXIS_SPEED_VERTICAL;
+            move -= Camera.main.transform.rotation * Vector3.left * Input.GetAxis("Horizontal") * KEYS_MOVE_AXIS_SPEED_HORIZONTAL;
+            move.Scale(new Vector3(1, 0, 1));
+            CameraInertia = (CameraInertia + move);
+            Debug.Log(move);
         }
     }
 }
