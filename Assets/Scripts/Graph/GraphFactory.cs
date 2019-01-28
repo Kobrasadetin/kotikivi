@@ -14,7 +14,8 @@ namespace Graph
          * Height from perlin noise
          */
         public static float MAX_SLOPE_DIFFERENCE = 0.1f;
-        public static Graph CreateGraph(int dimension, float noiseScale, float noiseOffset, out GraphNode midNode)
+        public static Graph CreateGraph(int dimension, float noiseScale, float noiseOffset, float seepRate, bool randomResources, out GraphNode midNode)
+
         {
             Graph result = new Graph();
             // Nodes are linear list in two dimensions, but are rendered and interact in a hex grid
@@ -25,10 +26,16 @@ namespace Graph
                 {
                     GraphNode thisNode = new GraphNode()
                     {
-                        Coordinate = new Vector2Int(x, y)
+                        Coordinate = new Vector2Int(x, y),
+                        Height = Perlin.Noise(noiseOffset + noiseScale * x, noiseOffset + noiseScale * y) / 2 + 0.5f,
+                        SeepRate = seepRate
                     };
-                    thisNode.InitRandomResources();
-                    thisNode.Height = Perlin.Noise(noiseOffset + noiseScale * x, noiseOffset + noiseScale * y) / 2 + 0.5f;
+
+                    if (randomResources)
+                    {
+                        thisNode.InitRandomResources();
+                    }
+
                     result.Nodes.Add(thisNode);
                     result.NodeAtCoordinates[thisNode.Coordinate] = thisNode;
                 }
