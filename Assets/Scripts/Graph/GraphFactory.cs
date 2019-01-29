@@ -141,10 +141,10 @@ namespace Graph
                 Type = InterActionType.HOME,
                 Sources =
                 {
-                    new ResourceTransfer(){ Type = ResourceType.WATER, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.WARMTH, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.NUTRIENT, Amount = 100f},
-                    new ResourceTransfer(){ Type = ResourceType.LIGTH, Amount = 100f},
+                    new ResourceTransfer(){ Type = ResourceType.WATER, Amount = 0.5f},
+                    new ResourceTransfer(){ Type = ResourceType.WARMTH, Amount = 0.5f},
+                    new ResourceTransfer(){ Type = ResourceType.NUTRIENT, Amount = 0.5f},
+                    new ResourceTransfer(){ Type = ResourceType.LIGTH, Amount = 0.5f},
                 }
             });
 

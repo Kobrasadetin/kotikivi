@@ -14,7 +14,7 @@ namespace Resources
             Resource result = new Resource()
             {
                 Type = type,
-                Amount = Random.Range(0f, ResourceCap.Get(type))
+                Amount = Random.Range(0f, 1f)
             };
             return result;
         }
