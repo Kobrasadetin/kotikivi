@@ -592,10 +592,13 @@ MonoBehaviour:
   Dimension: 22
   NoiseScale: 0.3
   NoiseOffset: 0.51234
+  ResourceSeepRate: 0.05
+  RandomResources: 1
   MiddleNode:
     Height: 0
     Coordinate: {x: 0, y: 0}
     Resources: []
+    SeepRate: 0.1
 --- !u!114 &1482237837
 MonoBehaviour:
   m_ObjectHideFlags: 0

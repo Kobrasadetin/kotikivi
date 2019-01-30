@@ -41,7 +41,7 @@ namespace Graph
 
             SeepResourcesToNeighbors();
 
-            AddResource(ResourceType.LIGTH, 0.2f); // sunlight
+            AddResource(ResourceType.LIGTH, 0.1f); // sunlight
             AddResource(ResourceType.WATER, 0.05f); // groundwater
         }
 

@@ -14,7 +14,20 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
-            Particles.gameObject.SetActive(Value > 0.01f);
+            if (Value > 0.01f)
+            {
+                if (!Particles.isPlaying)
+                {
+                    Particles.Play();
+                }
+            }
+            else
+            {
+                if (Particles.isPlaying)
+                {
+                    Particles.Stop();
+                }
+            }
             var emission = Particles.emission;
             emission.rateOverTime = new ParticleSystem.MinMaxCurve(0.0f, InitialRate * Value);
         }

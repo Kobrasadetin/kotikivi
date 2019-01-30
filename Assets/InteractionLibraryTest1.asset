@@ -20,15 +20,15 @@ MonoBehaviour:
     - Type: 3
       Amount: 0.2
     - Type: 2
-      Amount: 0.025
+      Amount: 0.05
     - Type: 1
-      Amount: 0.025
+      Amount: 0.05
     Sources:
     - Type: 4
       Amount: 0.05
     Spawns:
     - Id: Basic Grass
-      Threshold: 3
+      Threshold: 5
   - Id: Tall Grass
     Visualization: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
     Type: 4
@@ -44,23 +44,23 @@ MonoBehaviour:
       Amount: 0.1
     Spawns:
     - Id: Tall Grass
-      Threshold: 4
+      Threshold: 5
     - Id: Basic Grass
-      Threshold: 4
+      Threshold: 10
   - Id: Ants
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 7
     Sinks:
     - Type: 1
-      Amount: 0.01
+      Amount: 0.1
     - Type: 4
-      Amount: 0.01
+      Amount: 0.1
     Sources:
     - Type: 2
-      Amount: 0.3
+      Amount: 0.2
     Spawns:
     - Id: Ants
-      Threshold: 5
+      Threshold: 20
   - Id: Sun
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 3
@@ -146,21 +146,21 @@ MonoBehaviour:
     Type: 1
     Sinks:
     - Type: 1
-      Amount: 0.05
+      Amount: 0.1
     - Type: 4
-      Amount: 0.05
+      Amount: 0.1
     Sources:
     - Type: 2
       Amount: 0.05
     Spawns:
     - Id: Mushrooms
-      Threshold: 10
+      Threshold: 20
   - Id: Rain
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 5
     Sinks:
     - Type: 0
-      Amount: 0.1
+      Amount: 0.2
     - Type: 2
       Amount: 0.05
     Sources:
@@ -188,7 +188,7 @@ MonoBehaviour:
       Amount: 0.2
     Spawns:
     - Id: Fire
-      Threshold: 1
+      Threshold: 5
   - Id: Wind
     Visualization: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     Type: 6
@@ -196,6 +196,6 @@ MonoBehaviour:
     - Type: 0
       Amount: 0.2
     - Type: 1
-      Amount: 0.01
+      Amount: 0.1
     Sources: []
     Spawns: []
