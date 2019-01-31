@@ -58,14 +58,17 @@ namespace Visual
                 int vertexIndex = ( (int)angle) % 6;
                 int count = 1;
                 float sum = 0f;
-                GraphNode leftIncluded = neighbors.GetNeigbor(angle);
-                GraphNode rightIncluded = neighbors.GetNeigbor((((int)angle + 1) % 6));
-                if (leftIncluded != null)
+                GraphNode left = accessible.GetNeigbor(angle);
+                GraphNode right = accessible.GetNeigbor((((int)angle + 1) % 6));
+                GraphNode leftIncluded = accessible.GetNeigbor(angle) ;
+                GraphNode rightIncluded = accessible.GetNeigbor((((int)angle + 1) % 6));
+                bool othersAccess = ((left != null) && (right != null) && left.HasAccessibleNeighbor(right));
+                if (leftIncluded != null || othersAccess)
                 {
                     count++;
                     sum += leftIncluded.Height - node.Height;
                 }
-                if (rightIncluded != null)
+                if (rightIncluded != null || othersAccess)
                 {
                     count++;
                     sum += rightIncluded.Height - node.Height;

@@ -133,6 +133,11 @@ namespace Graph
             }
         }
 
+        public bool HasAccessibleNeighbor(GraphNode node)
+        {
+            return AccessibleNeighbors.Exists(neighbor => neighbor == node);
+        }
+
         public void SeepResourcesToNeighbors()
         {
             List<Resource> seep = new List<Resource>();
