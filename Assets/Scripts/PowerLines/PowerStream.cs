@@ -10,12 +10,13 @@ namespace PowerLines
     [Serializable]
     public enum StreamAngle
     {
-        LEFT,
-        RIGHT,
+        //VisualNode.ReCalculateGeometry expects StreamAngles to run clockwise.
         UPLEFT,
         UPRIGHT,
-        DOWNLEFT,
+        RIGHT,       
         DOWNRIGHT,
+        DOWNLEFT,
+        LEFT
     }
 
     public class PowerStream

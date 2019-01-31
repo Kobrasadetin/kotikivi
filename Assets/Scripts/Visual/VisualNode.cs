@@ -4,14 +4,16 @@ using Interactions;
 using Resources;
 using UnityEngine;
 using Visual.InteractionImplementations;
+using System;
 
 namespace Visual
-{
+{  
     public class VisualNode : MonoBehaviour
     {
         public PrefabChangeEvaluator prefabChangeEvaluator;
         public GraphNode node;
-        public GameObject groundMesh;
+        public GameObject groundMeshGO;
+        public Mesh groundMesh;
         public VisualInteraction[] visualInteractions;
         public VisualResource[] visualResources;
         public VisualStream[] visualStreams;
@@ -21,6 +23,11 @@ namespace Visual
         private bool geometryChanged;
         private float simulationHeight;
         private List<float> neighborHeights;
+        private Vector3[] originalMesh;
+
+        public static readonly int[] MESH_VERTEX_INDICES1 = { 0,  1,  2,  3,  4,  5 };
+        public static readonly int[] MESH_VERTEX_INDICES2 = { 25, 18, 19, 23, 20, 21 };
+        public static readonly int[] MESH_VERTEX_INDICES3 = { 29, 26, 22, 32, 33, 28 };
 
         public float SimulationHeight
         {
@@ -43,6 +50,37 @@ namespace Visual
         }
         public void ReCalculateGeometry()
         {
+            Vector3[] vertices = groundMesh.vertices;
+            NeighborList<GraphNode> neighbors = node.Neighbors;
+            NeighborList<GraphNode> accessible = node.AccessibleNeighbors;
+            foreach (PowerLines.StreamAngle angle in Enum.GetValues(typeof(PowerLines.StreamAngle)))
+            {
+                int vertexIndex = ( (int)angle) % 6;
+                int count = 1;
+                float sum = 0f;
+                GraphNode leftIncluded = neighbors.GetNeigbor(angle);
+                GraphNode rightIncluded = neighbors.GetNeigbor((((int)angle + 1) % 6));
+                if (leftIncluded != null)
+                {
+                    count++;
+                    sum += leftIncluded.Height - node.Height;
+                }
+                if (rightIncluded != null)
+                {
+                    count++;
+                    sum += rightIncluded.Height - node.Height;
+                }
+                float newHeight = sum / count * 3f;
+                Vector3 oldpos = originalMesh[MESH_VERTEX_INDICES1[vertexIndex]];
+                vertices[MESH_VERTEX_INDICES1[vertexIndex]] = new Vector3(oldpos.x, oldpos.y, oldpos.z + newHeight);
+                oldpos = originalMesh[MESH_VERTEX_INDICES2[vertexIndex]];
+                vertices[MESH_VERTEX_INDICES2[vertexIndex]] = new Vector3(oldpos.x, oldpos.y, oldpos.z + newHeight);
+                oldpos = originalMesh[MESH_VERTEX_INDICES3[vertexIndex]];
+                vertices[MESH_VERTEX_INDICES3[vertexIndex]] = new Vector3(oldpos.x, oldpos.y, oldpos.z + newHeight);
+                //oldpos = vertices[MESH_VERTEX_INDICES2[vertexIndex]];
+                //vertices[MESH_VERTEX_INDICES2[vertexIndex]] = new Vector3(oldpos.x, oldpos.y,  .2f);
+            }
+            groundMesh.vertices = vertices;
             this.simulationHeight = node.Height;
             SetVisualHeight(this.simulationHeight);
         }
@@ -117,9 +155,11 @@ namespace Visual
             this.node = node;
             this.prefabChangeEvaluator = prefabChangeEvaluator;
             SetPosition(this.prefabChangeEvaluator.calculatePosition(node));
-            this.groundMesh = transform.Find("GroundMesh").gameObject;
-            this.groundMeshRenderer = this.groundMesh.GetComponent<MeshRenderer>();
-            if (groundMesh == null)
+            this.groundMeshGO = transform.Find("GroundMesh").gameObject;
+            this.groundMesh = groundMeshGO.GetComponent<MeshFilter>().mesh;
+            this.groundMeshRenderer = this.groundMeshGO.GetComponent<MeshRenderer>();
+            this.originalMesh = (Vector3[])groundMesh.vertices.Clone();
+            if (groundMeshGO == null)
             {
                 Debug.LogError("No GroundMesh");
             }

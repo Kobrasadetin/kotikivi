@@ -19,7 +19,9 @@ namespace Tests
             {
                 foreach (PowerLines.StreamAngle angle in (PowerLines.StreamAngle[])PowerLines.StreamAngle.GetValues(typeof(PowerLines.StreamAngle)))
                 {
+                    #pragma warning disable 612, 618
                     Assert.AreEqual(node.GetNeighborInDirection(angle), node.GetNeighborInDirectionDeprecated(angle));
+                    #pragma warning restore 612, 618
                 };
 
             });

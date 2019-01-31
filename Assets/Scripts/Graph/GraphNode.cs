@@ -17,7 +17,7 @@ namespace Graph
         [NonSerialized]
         public NeighborList<GraphNode> Neighbors = new NeighborList<GraphNode>();
         [NonSerialized]
-        private NeighborList<GraphNode> AccessibleNeighbors = new NeighborList<GraphNode>();
+        public NeighborList<GraphNode> AccessibleNeighbors = new NeighborList<GraphNode>();
         [NonSerialized]
         public List<ResourceInteraction> Interactions = new List<ResourceInteraction>();
         [NonSerialized]
@@ -36,7 +36,7 @@ namespace Graph
         public void Tick()
         {
             Interactions.ForEach(x => x.Consume(Resources));
-            Interactions.ForEach(x => x.Spawn(Neighbors.ToList()));
+            Interactions.ForEach(x => x.Spawn(Neighbors));
             Interactions.ForEach(x => x.Tick());
 
             SeepResourcesToNeighbors();

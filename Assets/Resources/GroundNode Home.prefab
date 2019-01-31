@@ -84,6 +84,7 @@ MonoBehaviour:
     Coordinate: {x: 0, y: 0}
     Resources: []
     SeepRate: 0.1
+  groundMeshGO: {fileID: 0}
   groundMesh: {fileID: 0}
   visualInteractions:
   - {fileID: 4228010261700732274}
@@ -6656,19 +6657,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b8332200de6f6545af231cf73a12e59, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.61237246
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b8332200de6f6545af231cf73a12e59, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3535534
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b8332200de6f6545af231cf73a12e59, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.3535534
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b8332200de6f6545af231cf73a12e59, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.61237246
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b8332200de6f6545af231cf73a12e59, type: 3}
       propertyPath: m_RootOrder
@@ -6680,7 +6681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b8332200de6f6545af231cf73a12e59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b8332200de6f6545af231cf73a12e59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
