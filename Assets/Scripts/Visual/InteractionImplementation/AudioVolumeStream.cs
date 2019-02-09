@@ -14,7 +14,8 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
-            if (!Source.enabled) return;
+			UnityEngine.Profiling.Profiler.BeginSample("AudioVolumeStream Update");
+			if (!Source.enabled) return;
 
             bool shouldPlay = Value > 0.01f;
 
@@ -27,6 +28,8 @@ namespace Visual.InteractionImplementations
             {
                 if (Source.isPlaying) Source.Stop();
             }
-        }
+			UnityEngine.Profiling.Profiler.EndSample();
+
+		}
     }
 }

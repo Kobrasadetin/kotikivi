@@ -16,7 +16,7 @@ namespace Visual
         public Mesh groundMesh;
         public VisualInteraction[] visualInteractions;
         public VisualResource[] visualResources;
-        public VisualStream[] visualStreams;
+		public VisualStream[] visualStreams;
 
         private MeshRenderer groundMeshRenderer;
         private bool initialized;
@@ -24,8 +24,9 @@ namespace Visual
         private float simulationHeight;
         private List<float> neighborHeights;
         private Vector3[] originalMesh;
+		private MaterialPropertyBlock materialPropertyBlock;
 
-        public static readonly int[] MESH_VERTEX_INDICES1 = { 0,  1,  2,  3,  4,  5 };
+		public static readonly int[] MESH_VERTEX_INDICES1 = { 0,  1,  2,  3,  4,  5 };
         public static readonly int[] MESH_VERTEX_INDICES2 = { 25, 18, 19, 23, 20, 21 };
         public static readonly int[] MESH_VERTEX_INDICES3 = { 29, 26, 22, 32, 33, 28 };
 
@@ -89,8 +90,14 @@ namespace Visual
         }
         public void SetGroundColor(Color color)
         {
-            groundMeshRenderer.material.SetColor("_Color", color);
-        }
+			if (materialPropertyBlock.GetColor("_Color") != color)
+			{
+				materialPropertyBlock.SetColor("_Color", color);
+				groundMeshRenderer.SetPropertyBlock(materialPropertyBlock);
+			}
+			//setColor makes a copy of the material, very bad. Left here as a reminder to _not_ to use it:
+			//groundMeshRenderer.material.SetColor("_Color", color);
+		}
         public void ResetInteractionTargets()
         {
             foreach (var visualInteraction in visualInteractions)
@@ -173,24 +180,28 @@ namespace Visual
         // Start is called before the first frame update
         void Start()
         {
-            Update();
+			materialPropertyBlock = new MaterialPropertyBlock();
+			Update();
         }
 
         // Update is called once per frame
         void Update()
         {
+			UnityEngine.Profiling.Profiler.BeginSample("VisualNode Update");
             if (initialized && prefabChangeEvaluator != null)
             {
                 if (geometryChanged)
                 {
                     ReCalculateGeometry();
-                }
+					geometryChanged = false;
+				}
                 prefabChangeEvaluator.UpdatePrefab(this, node);
             }
             else
             {
                 Debug.Log("UPDATE No change evaluator assigned for " + this.ToString());
             }
-        }
+			UnityEngine.Profiling.Profiler.EndSample();
+		}
     }
 }
