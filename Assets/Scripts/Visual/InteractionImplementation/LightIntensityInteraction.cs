@@ -15,8 +15,10 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
-            Lght.enabled = Value > 0.01f;
+			UnityEngine.Profiling.Profiler.BeginSample("LightIntensityInteraction Update");
+			Lght.enabled = Value > 0.01f;
             Lght.intensity = Value * initialIntensity;
-        }
+			UnityEngine.Profiling.Profiler.EndSample();
+		}
     }
 }

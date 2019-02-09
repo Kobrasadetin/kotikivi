@@ -46,15 +46,22 @@ namespace Visual
 			UnityEngine.Profiling.Profiler.BeginSample("UpdatePrefab visualizations");
 			//update visualizations
 			visualNode.ResetInteractionTargets();
-            node.Interactions.ForEach(x => visualNode.SetInteractionValue(x.Id, x.CurrentFlowRate));
+			foreach(var x in node.Interactions){
+				visualNode.SetInteractionValue(x.Id, x.CurrentFlowRate);
+			}
             visualNode.ResetResourceVisualizationTargets();
-            node.Resources.ForEach(x => visualNode.SetResourceVisualizaionValue(x.Type, x.Amount));
+			foreach (var x in node.Resources)
+			{
+				visualNode.SetResourceVisualizaionValue(x.Type, x.Amount);
+			}
             visualNode.ResetStreamVisualizationTargets();
-            node.Streams.ForEach(x =>
-            {
-                //x.Interactions.ForEach(y => visualNode.SetStreamVisualizaionValue(y.Type, y.CurrentFlowRate));
-                x.Transfers.ForEach(y => visualNode.SetStreamVisualizaionValue(y.Type, y.Amount));
-            });
+			foreach (var x in node.Streams)
+			{
+				foreach (var y in x.Transfers)
+				{
+					visualNode.SetStreamVisualizaionValue(y.Type, y.Amount);
+				}
+			}
 			UnityEngine.Profiling.Profiler.EndSample();
 			UnityEngine.Profiling.Profiler.BeginSample("UpdatePrefab color");
 			//grassiness
