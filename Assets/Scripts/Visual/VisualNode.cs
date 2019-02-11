@@ -17,6 +17,7 @@ namespace Visual
         public VisualInteraction[] visualInteractions;
         public VisualResource[] visualResources;
 		public VisualStream[] visualStreams;
+		public MeshCollider collider;
 
         private MeshRenderer groundMeshRenderer;
         private bool initialized;
@@ -87,6 +88,7 @@ namespace Visual
             groundMesh.vertices = vertices;
             this.simulationHeight = node.Height;
             SetVisualHeight(this.simulationHeight);
+			
         }
         public void SetGroundColor(Color color)
         {
@@ -173,7 +175,10 @@ namespace Visual
             {
                 Debug.LogError("No GroundMesh");
             }
-            initialized = true;
+			this.collider = groundMeshGO.GetComponent<MeshCollider>();
+			Debug.Log(collider);
+
+			initialized = true;
             geometryChanged = true;
         }
 

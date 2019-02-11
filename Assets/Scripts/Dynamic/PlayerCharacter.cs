@@ -19,7 +19,12 @@ namespace Dynamic
             foresightPosition = position;
         }
 
-        public override void DynamicUpdate()
+		public override bool IsPlayer()
+		{
+			return true;
+		}
+
+		public override void DynamicUpdate()
         {
             AI.PlayerAI ai = AI.PlayerAI.Instance;
             if (ai.GetAction() == AI.PlayerAI.Action.RUN)

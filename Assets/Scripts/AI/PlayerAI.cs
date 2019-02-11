@@ -16,6 +16,23 @@ namespace AI
 
         public float goalDistance = 0.4f;
         public float maxDistance = 1.2f;
+		private ControlMode controlMode;
+
+		public ControlMode GetControlMode()
+		{
+			return controlMode;
+		}
+
+		public void SetControlMode(ControlMode value)
+		{
+			controlMode = value;
+		}
+
+		public enum ControlMode
+		{
+			PLAYER,
+			AI
+		}
 
         public enum Action
         {

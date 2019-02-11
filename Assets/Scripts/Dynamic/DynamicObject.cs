@@ -14,6 +14,10 @@ namespace Dynamic
         public Quaternion Orientation = Quaternion.identity;
         public GameObject prefab;
 
+		public virtual bool IsPlayer(){
+			return false;
+		}
+
         public DynamicObject(Vector3 position, Graph.Graph graph)
         {
             this.position = position;
