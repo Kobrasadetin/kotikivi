@@ -4,11 +4,13 @@ using PowerLines;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace Graph {
     public class NeighborList<T> : IEnumerable<T>
     {
         private T[] neighbors;
+        private int count = 0;
 
         public NeighborList()
         {
@@ -17,12 +19,20 @@ namespace Graph {
 
         public void SetNeighbor(StreamAngle angle, T neighbor)
         {
+            T oldValue = neighbors[(int)angle];
+            count -= oldValue == null ? 0 : 1;
+            count += neighbor == null ? 0 : 1;
             neighbors[(int)angle] = neighbor;
         }
 
         public T GetNeigbor(StreamAngle angle)
         {
             return neighbors[(int)angle];
+        }
+
+        public T GetNeigbor(int angle)
+        {
+            return neighbors[angle];
         }
 
         public StreamAngle GetNeighborDirection(T neighborObject)
@@ -36,6 +46,22 @@ namespace Graph {
             }
             throw new KeyNotFoundException();
         }
+
+        public List<KeyValuePair<StreamAngle, T>> GetAnglesAndValues()
+        {
+            List<KeyValuePair<StreamAngle, T>> result = new List<KeyValuePair<StreamAngle, T>>();
+            int index = 0;
+            foreach (T obj in neighbors)
+            {
+                if (obj != null)
+                {
+                    result.Add(new KeyValuePair<StreamAngle, T>((StreamAngle)index, obj));
+                }
+                index++;
+            }
+            return result;
+        }
+
 
         public int Count
         {

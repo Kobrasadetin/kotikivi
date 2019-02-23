@@ -77,20 +77,23 @@ namespace Interactions
             CurrentFlowRate = availability;
         }
 
-        public void Spawn(List<GraphNode> neighbors)
+        public void Spawn(NeighborList<GraphNode> neighbors)
         {
             // spawn interaction to random neighbor node
             if (_spawnCounter >= _spawnRate)
             {
-                int neighborIndex = Mathf.FloorToInt(Random.Range(0, neighbors.Count - 0.001f));
+                int neighborIndex = Random.Range(0, neighbors.Count);
                 Spawns.ForEach(spawn =>
                 {
-                    if (!neighbors[neighborIndex].Interactions.Exists(x => x.Id == spawn.Id))
+                    if (neighbors.GetNeigbor(neighborIndex) != null)
                     {
-                        neighbors[neighborIndex].Interactions.Add(
-                            new ResourceInteraction(
-                                spawn.Dependencies.First(y => y.Id == spawn.Id), spawn.Dependencies));
-                    };
+                        if (!neighbors.GetNeigbor(neighborIndex).Interactions.Exists(x => x.Id == spawn.Id))
+                        {
+                            neighbors.GetNeigbor(neighborIndex).Interactions.Add(
+                                new ResourceInteraction(
+                                    spawn.Dependencies.First(y => y.Id == spawn.Id), spawn.Dependencies));
+                        };
+                    }
                 });
                 _spawnCounter -= _spawnRate;
             }

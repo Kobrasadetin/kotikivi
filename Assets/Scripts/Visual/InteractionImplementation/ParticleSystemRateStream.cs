@@ -14,7 +14,8 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
-            if (Value > 0.01f)
+			UnityEngine.Profiling.Profiler.BeginSample("ParticleSystemRateStream Update");
+			if (Value > 0.01f)
             {
                 if (!Particles.isPlaying)
                 {
@@ -30,6 +31,8 @@ namespace Visual.InteractionImplementations
             }
             var emission = Particles.emission;
             emission.rateOverTime = new ParticleSystem.MinMaxCurve(0.0f, InitialRate * Value);
-        }
+			UnityEngine.Profiling.Profiler.EndSample();
+
+		}
     }
 }

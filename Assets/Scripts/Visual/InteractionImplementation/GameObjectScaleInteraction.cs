@@ -19,7 +19,8 @@ namespace Visual.InteractionImplementations
 
         public override void SetValue()
         {
-            bool shouldActivate = (Value > 0.01f);
+			UnityEngine.Profiling.Profiler.BeginSample("GameObjectScaleInteraction Update");
+			bool shouldActivate = (Value > 0.01f);
 
             if ((!activeObject) && shouldActivate)
             {
@@ -44,6 +45,7 @@ namespace Visual.InteractionImplementations
                     Transforms[i].localScale = MaxScale[i] * Value;
                 }
             }
-        }
+			UnityEngine.Profiling.Profiler.EndSample();
+		}
     }
 }

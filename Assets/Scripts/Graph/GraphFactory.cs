@@ -13,7 +13,7 @@ namespace Graph
          * Create rectangular graph that represents hexagon grid rendered in 1/2 square offset on each alternating row
          * Height from perlin noise
          */
-        public static float MAX_SLOPE_DIFFERENCE = 0.1f;
+        public static float MAX_SLOPE_DIFFERENCE = 0.22f;
         public static Graph CreateGraph(int dimension, float noiseScale, float noiseOffset, float seepRate, bool randomResources, out GraphNode midNode)
 
         {

@@ -17,7 +17,7 @@ namespace Graph
         [NonSerialized]
         public NeighborList<GraphNode> Neighbors = new NeighborList<GraphNode>();
         [NonSerialized]
-        private NeighborList<GraphNode> AccessibleNeighbors = new NeighborList<GraphNode>();
+        public NeighborList<GraphNode> AccessibleNeighbors = new NeighborList<GraphNode>();
         [NonSerialized]
         public List<ResourceInteraction> Interactions = new List<ResourceInteraction>();
         [NonSerialized]
@@ -36,7 +36,7 @@ namespace Graph
         public void Tick()
         {
             Interactions.ForEach(x => x.Consume(Resources));
-            Interactions.ForEach(x => x.Spawn(Neighbors.ToList()));
+            Interactions.ForEach(x => x.Spawn(Neighbors));
             Interactions.ForEach(x => x.Tick());
 
             SeepResourcesToNeighbors();
@@ -131,6 +131,11 @@ namespace Graph
             {
                 throw new UnassignedReferenceException("no neighbor at " + direction.ToString() + " for node " + this.ToString());
             }
+        }
+
+        public bool HasAccessibleNeighbor(GraphNode node)
+        {
+            return AccessibleNeighbors.Exists(neighbor => neighbor == node);
         }
 
         public void SeepResourcesToNeighbors()

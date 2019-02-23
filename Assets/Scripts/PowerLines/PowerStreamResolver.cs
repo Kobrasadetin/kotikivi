@@ -12,13 +12,13 @@ namespace PowerLines
     {
         NONE,
         MIDDLE,
-        LEFT,
-        RIGHT,
-        UPLEFT,
-        UPRIGHT,
-        DOWNLEFT,
-        DOWNRIGHT,
-    }
+		UPLEFT,
+		UPRIGHT,
+		RIGHT,
+		DOWNRIGHT,
+		DOWNLEFT,
+		LEFT
+	}
 
     public struct StreamConfiguration
     {
