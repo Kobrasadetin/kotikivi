@@ -7,8 +7,8 @@ namespace UI
 
     public class UIClickAction : MonoBehaviour
     {
-        public static float KEYS_MOVE_AXIS_SPEED_VERTICAL = 1f;
-        public static float KEYS_MOVE_AXIS_SPEED_HORIZONTAL = .6f;
+        public static float KEYS_MOVE_AXIS_SPEED_VERTICAL = .45f;
+        public static float KEYS_MOVE_AXIS_SPEED_HORIZONTAL = .27f;
         public float dragSpeed = 20;
         public float speedLimit = 0.19f;
         public static Vector3 CameraInertia = Vector3.zero;
