@@ -12,7 +12,8 @@ namespace Resources
         PLANTS,
         BERRIES,
         CARCASSES,
-        SEEDS
+        SEEDS,
+        DUNG
     }
 
     public static class ResourceCap
