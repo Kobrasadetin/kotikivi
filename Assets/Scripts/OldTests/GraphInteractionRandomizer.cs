@@ -10,7 +10,7 @@ namespace OldTests
         public GraphNode Node;
     }
 
-    public class GraphRunnerTest : MonoBehaviour
+    public class GraphInteractionRandomizer : MonoBehaviour
     {
         public GraphSingleton GraphSingleton;
         public InteractionLibrary InteractionLibrary;
